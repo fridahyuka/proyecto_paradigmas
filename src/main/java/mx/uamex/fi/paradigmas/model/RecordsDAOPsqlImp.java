@@ -1,7 +1,7 @@
 package mx.uamex.fi.paradigmas.model;
 
-import mx.uamex.fi.paradigmas.data.Record;
-import mx.uamex.fi.paradigmas.data.Jugador;
+import mx.uamex.fi.paradigmas.model.data.Record;
+import mx.uamex.fi.paradigmas.model.data.Jugador;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class RecordsDAOPsqlImp extends AbstractSqlDAO implements RecordsDAO {
         String sql = "SELECT * FROM records";
 
         try (Statement st = conexion.createStatement();
-             ResultSet rs = st.executeQuery(sql)) {
+                ResultSet rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
                 Jugador j = new Jugador();
@@ -37,8 +37,7 @@ public class RecordsDAOPsqlImp extends AbstractSqlDAO implements RecordsDAO {
                 Record r = new Record(
                         j,
                         rs.getString("juego"),
-                        rs.getDate("fecha")
-                );
+                        rs.getDate("fecha"));
 
                 lista.add(r);
             }

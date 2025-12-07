@@ -1,4 +1,4 @@
-package mx.uamex.fi.paradigmas.api;
+package mx.uamex.fi.paradigmas.API;
 
 import java.util.Date;
 
@@ -9,7 +9,8 @@ public class APIRespuesta {
     private char eleccionJugador;
     private char eleccionAPI;
 
-    public APIRespuesta() {}
+    public APIRespuesta() {
+    }
 
     public char getResultado() {
         return resultado;

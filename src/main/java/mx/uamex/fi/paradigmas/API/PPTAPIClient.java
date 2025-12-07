@@ -1,4 +1,4 @@
-package mx.uamex.fi.paradigmas.api;
+package mx.uamex.fi.paradigmas.API;
 
 import mx.uamex.fi.paradigmas.session.Movimiento;
 

@@ -1,4 +1,4 @@
-package mx.uamex.fi.paradigmas.data;
+package mx.uamex.fi.paradigmas.model.data;
 
 import java.util.Date;
 
@@ -7,7 +7,8 @@ public class Record implements Data {
     private String juego;
     private Date fecha;
 
-    public Record() {}
+    public Record() {
+    }
 
     public Record(Jugador jugador, String juego, Date fecha) {
         this.jugador = jugador;

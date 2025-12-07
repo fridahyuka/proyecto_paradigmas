@@ -1,4 +1,4 @@
-package mx.uamex.fi.paradigmas.data;
+package mx.uamex.fi.paradigmas.model.data;
 
 public class Jugador implements Data {
     private String login;
@@ -6,7 +6,8 @@ public class Jugador implements Data {
     private String correo;
     private String atributo;
 
-    public Jugador() {}
+    public Jugador() {
+    }
 
     public Jugador(String login, String password, String correo, String atributo) {
         this.login = login;

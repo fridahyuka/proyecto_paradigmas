@@ -1,5 +1,7 @@
 package mx.uamex.fi.paradigmas.session;
 
+import mx.uamex.fi.paradigmas.model.data.Jugador;
+
 public class Partida {
 
     private Jugador jugador;

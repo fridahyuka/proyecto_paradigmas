@@ -1,6 +1,6 @@
 package mx.uamex.fi.paradigmas.model;
 
-import mx.uamex.fi.paradigmas.data.Jugador;
+import mx.uamex.fi.paradigmas.model.data.Jugador;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,15 +28,14 @@ public class JugadoresDAOPsqlImp extends AbstractSqlDAO implements JugadoresDAO 
         String sql = "SELECT * FROM jugadores";
 
         try (Statement st = conexion.createStatement();
-             ResultSet rs = st.executeQuery(sql)) {
+                ResultSet rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
                 Jugador j = new Jugador(
                         rs.getString("login"),
                         rs.getString("password"),
                         rs.getString("correo"),
-                        rs.getString("atributo")
-                );
+                        rs.getString("atributo"));
                 lista.add(j);
             }
         } catch (SQLException e) {
