@@ -6,7 +6,7 @@ Proyecto realizado para la Facultad de Ingeniería de la Universidad Autónoma d
 
 1. Frida Alejandra Mendoza Martinez
 2. Gael González Méndez
-
+3. Angel Yahir Albarrán Cruz
 # Diagramas UML
 
 ## Diagrama de clases
