@@ -1,22 +1,14 @@
 package mx.uamex.fi.paradigmas.controller;
 
-import mx.uamex.fi.paradigmas.model.ModJuego;
+import mx.uamex.fi.paradigmas.game.modo.ModoJuego;
 import mx.uamex.fi.paradigmas.model.RecordsDAO;
 import mx.uamex.fi.paradigmas.model.JugadoresDAO;
 
 public class GameController {
 
-    private ModJuego modJuego;
+    private ModoJuego modJuego;
     private RecordsDAO recordsDAO;
     private JugadoresDAO jugadoresDAO;
-
-    public ModJuego getModJuego() {
-        return modJuego;
-    }
-
-    public void setModJuego(ModJuego modJuego) {
-        this.modJuego = modJuego;
-    }
 
     public RecordsDAO getRecordsDAO() {
         return recordsDAO;
