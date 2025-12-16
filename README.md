@@ -8,6 +8,7 @@ Proyecto realizado para la Facultad de Ingeniería de la Universidad Autónoma d
 2. Gael González Méndez
 3. Angel Yahir Albarrán Cruz
 4. Kevin Alejandro Nabor Matias
+5. Jesús Emmanuel Díaz Vera
 # Diagramas UML
 
 ## Diagrama de clases
