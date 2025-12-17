@@ -62,6 +62,10 @@ sudo -u postgres psql -d pptls -f schema.sql
 
 ![Diagrama de actividades - Partida online](docs/uml/DIAGRAMA%20DE%20ACTIVIDADES%20%E2%80%94%20PARTIDA%20ONLINE.png)
 
-## Descripción casos de uso
+### Descripción de Casos de Uso
 
-![Descripción de Casos de Uso](docs/uml/Descripcion%20casos%20de%20uso.pdf)
+![Descripción de Casos de Uso - Parte 1](docs/uml/Descripcion%20casos%20de%20uso_1.jpg)
+
+![Descripción de Casos de Uso - Parte 2](docs/uml/Descripcion%20casos%20de%20uso_2.jpg)
+
+![Descripción de Casos de Uso - Parte 3](docs/uml/Descripcion%20casos%20de%20uso_3.jpg)
