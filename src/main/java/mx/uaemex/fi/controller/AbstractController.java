@@ -2,18 +2,13 @@ package mx.uaemex.fi.controller;
 
 import javafx.stage.Stage;
 import mx.uaemex.fi.service.JugadoresService;
+import mx.uaemex.fi.service.RecordsService;
 
 public abstract class AbstractController {
-    protected JugadoresService servicio;
+    protected JugadoresService servicioJugadores;
+    protected RecordsService serviciorecords;
     protected Stage stage;
 
-    public JugadoresService getServicio() {
-        return servicio;
-    }
-
-    public void setServicio(JugadoresService servicio) {
-        this.servicio = servicio;
-    }
 
     public Stage getStage() {
         return stage;
@@ -21,5 +16,21 @@ public abstract class AbstractController {
 
     public void setStage(Stage satage) {
         this.stage = satage;
+    }
+
+    public JugadoresService getServicioJugadores() {
+        return servicioJugadores;
+    }
+
+    public void setServicioJugadores(JugadoresService servicioJugadores) {
+        this.servicioJugadores = servicioJugadores;
+    }
+
+    public RecordsService getServiciorecords() {
+        return serviciorecords;
+    }
+
+    public void setServiciorecords(RecordsService serviciorecords) {
+        this.serviciorecords = serviciorecords;
     }
 }

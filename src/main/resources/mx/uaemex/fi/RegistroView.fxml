@@ -37,7 +37,7 @@
             <!-- CONFIRMAR -->
             <HBox alignment="CENTER_LEFT" spacing="10">
                 <Label prefWidth="150" text="Confirmar contraseña:" />
-                <PasswordField fx:id="fldComprobar" prefWidth="250" />
+                <PasswordField fx:id="fldConfirmarP" prefWidth="250" />
             </HBox>
 
             <!-- CORREO -->
@@ -47,7 +47,7 @@
             </HBox>
 
             <!-- ERROR -->
-            <Label fx:id="error" alignment="CENTER" style="-fx-text-fill: red;" />
+            <Label fx:id="lblError" alignment="CENTER" style="-fx-text-fill: red;" />
 
             <!-- BOTÓN -->
             <Button onAction="#onRegistrarClic" prefWidth="150" text="Registrar">

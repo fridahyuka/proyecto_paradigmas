@@ -4,18 +4,22 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import mx.uaemex.fi.controller.LoginController;
 import mx.uaemex.fi.service.JugadoresService;
+import mx.uaemex.fi.service.RecordsService;
 import mx.uaemex.fi.util.NavigationHelper;
 
 public class Launcher extends Application {
 
-    private JugadoresService servicio;//el servicio global que usara toda la aplicacion
+    //Servicios globales que usara toda la aplicacion
+    private JugadoresService serviciojugadores;
+    private RecordsService servicioRecords;
 
     @Override
     public void start(Stage stage) {
 
-        // 🔌 Inicializar conexión y service
-        servicio = Conexion.conectarLocal();
-        // ⬆ este método DEBE devolver JugadoresService
+        //Version local
+       Conexion.conectarLocal();
+       serviciojugadores=Conexion.getServicioJugadores();
+       servicioRecords=Conexion.getServicioRecords();
 
         NavigationHelper.goTo(
                 stage,
@@ -24,7 +28,8 @@ public class Launcher extends Application {
                 controller -> {
                     LoginController lc = (LoginController) controller;
                     lc.setStage(stage);
-                    lc.setServicio(servicio);
+                    lc.setServicioJugadores(serviciojugadores);
+                    lc.setServiciorecords(servicioRecords);
                 }
         );
 

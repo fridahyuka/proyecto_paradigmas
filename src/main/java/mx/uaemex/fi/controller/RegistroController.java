@@ -13,30 +13,33 @@ public class RegistroController extends AbstractController{
     @FXML private TextField fldLogin;
     @FXML private PasswordField fldPassword;
     @FXML private TextField fldCorreo;
-    @FXML private PasswordField fldComprobar;
-    @FXML private Label error;
+    @FXML private PasswordField fldConfirmarP;
+    @FXML private Label lblError;
 
 
     @FXML
     public void onRegistrarClic() {
 
-        error.setText(""); // limpiar errores previos
+        lblError.setText("");
 
         String login = fldLogin.getText();
         String password = fldPassword.getText();
+        String confirmacion= fldConfirmarP.getText();
         String correo = fldCorreo.getText();
-        String comprobar= fldComprobar.getText();
 
-        // 🔐 Validaciones
+        //Validar entradas
         if (login == null || login.isBlank()
                 || password == null || password.isBlank()
                 || correo == null || correo.isBlank()
-                || comprobar==null || comprobar.isBlank() ) {
+                || confirmacion==null || confirmacion.isBlank() ) {
 
             mostrarError("Llena todos los campos");
             return;
         }
-        if(!password.equals(comprobar)){
+        if(login.length()>15){
+            mostrarError("Usuario demasiado largo, maximo 15 caracteres");
+        }
+        if(!password.equals(confirmacion)){
             mostrarError("Las contraseñas no coinciden");
             return;
         }
@@ -49,22 +52,21 @@ public class RegistroController extends AbstractController{
         Jugador filtro = new Jugador();
         filtro.setLogin(login);
 
-        if (!servicio.consultarUsuario(filtro).isEmpty()) {
+        if (!servicioJugadores.consultarUsuario(filtro).isEmpty()) {
             mostrarError("El usuario no está disponible");
             return;
         }
 
 
-        // 🧾 Registro
         Jugador nuevo = new Jugador();
         nuevo.setLogin(login);
         nuevo.setPassword(password);
         nuevo.setCorreo(correo);
         nuevo.setActivo(true);
 
-        servicio.registrarJugador(nuevo);
+        servicioJugadores.registrarJugador(nuevo);
 
-        // ✅ ÉXITO → Alert
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Registro exitoso");
         alert.setHeaderText(null);
@@ -72,7 +74,8 @@ public class RegistroController extends AbstractController{
         alert.showAndWait();
 
 
-        //abre la ventana del jueg
+        //abre la ventana del juego
+        //NavigationHelper.goTo();
     }
 
     @FXML
@@ -83,7 +86,8 @@ public class RegistroController extends AbstractController{
                 "Login",
                 controller -> {
                     LoginController lc = (LoginController) controller;
-                    lc.setServicio(servicio);
+                    lc.setServicioJugadores(servicioJugadores);
+                    lc.setServiciorecords(serviciorecords);
                     lc.setStage(stage);
                 }
         );
@@ -91,8 +95,8 @@ public class RegistroController extends AbstractController{
 
 
     private void mostrarError(String mensaje) {
-        error.setText(mensaje);
-        error.setStyle("-fx-text-fill: red;");
+        lblError.setText(mensaje);
+        lblError.setStyle("-fx-text-fill: red;");
     }
 
 }

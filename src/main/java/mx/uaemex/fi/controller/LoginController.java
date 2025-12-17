@@ -19,7 +19,7 @@ public class LoginController extends AbstractController {
     @FXML
     public void onEntrarClick() {
 
-        if (servicio == null) {
+        if (servicioJugadores == null) {
             lblMessage.setText("Servicio no inicializado");
             return;
         }
@@ -40,7 +40,7 @@ public class LoginController extends AbstractController {
         Jugador filtro = new Jugador();
         filtro.setLogin(usuario);
 
-        ArrayList<Jugador> encontrados = servicio.consultarUsuario(filtro);
+        ArrayList<Jugador> encontrados = servicioJugadores.consultarUsuario(filtro);
 
         if (encontrados.isEmpty()) {
             lblMessage.setText("Usuario no encontrado");
@@ -75,7 +75,8 @@ public class LoginController extends AbstractController {
                 "Registrarse",
                 controller -> {
                     RegistroController rc = (RegistroController) controller;
-                    rc.setServicio(servicio);
+                    rc.setServicioJugadores(servicioJugadores);
+                    rc.setServiciorecords(serviciorecords);
                     rc.setStage(stage);
                 }
         );
