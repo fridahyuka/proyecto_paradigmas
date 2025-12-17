@@ -25,12 +25,16 @@ public class RecordsDAOPsqlImp extends AbstractSqlDAO implements RecordsDAO {
 
 
     @Override
-    public ArrayList<Record> consultar() {
-        ArrayList<Record> lista = new ArrayList<>();
-        String sql = "SELECT * FROM records";
+    public ArrayList<Record> consultar(Jugador j) {
 
-        try (Statement st = conexion.createStatement();
-             ResultSet rs = st.executeQuery(sql)) {
+        ArrayList<Record> lista = new ArrayList<>();
+        String sql = "SELECT * FROM records WHERE jugador_id = ?";
+
+        try (PreparedStatement st = conexion.prepareStatement(sql)) {
+
+            st.setInt(1, j.getId());
+
+            ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
 
@@ -48,12 +52,14 @@ public class RecordsDAOPsqlImp extends AbstractSqlDAO implements RecordsDAO {
 
                 lista.add(r);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return lista;
     }
+
 
     @Override
     public void actualizar(Record record) {

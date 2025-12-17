@@ -4,7 +4,7 @@ import mx.uaemex.fi.model.data.Jugador;
 
 import java.util.ArrayList;
 
-public interface JugadoresService extends Service{
+public interface JugadoresService {
     public ArrayList<Jugador> consultarUsuario(Jugador j);
     public ArrayList<Jugador> consultar();
     public Jugador registrarJugador(Jugador j);
