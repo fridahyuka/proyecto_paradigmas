@@ -26,11 +26,11 @@ public abstract class AbstractController {
         this.servicioJugadores = servicioJugadores;
     }
 
-    public RecordsService getServiciorecords() {
+    public RecordsService getServicioRecords() {
         return serviciorecords;
     }
 
-    public void setServiciorecords(RecordsService serviciorecords) {
+    public void setServicioRecords(RecordsService serviciorecords) {
         this.serviciorecords = serviciorecords;
     }
 }

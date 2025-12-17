@@ -74,8 +74,18 @@ public class RegistroController extends AbstractController{
         alert.showAndWait();
 
 
-        //abre la ventana del juego
-        //NavigationHelper.goTo();
+        // Abrir ventana del juego
+
+        NavigationHelper.goTo(stage,
+                "/mx/uaemex/fi/PartidaView.fxml",
+                "Partida",
+                controller->{
+                    PartidaController pc= (PartidaController) controller;
+                    pc.setServicioJugadores(servicioJugadores);
+                    pc.setServicioRecords(serviciorecords);
+                    pc.setStage(stage);
+                }
+        );
     }
 
     @FXML
@@ -87,7 +97,7 @@ public class RegistroController extends AbstractController{
                 controller -> {
                     LoginController lc = (LoginController) controller;
                     lc.setServicioJugadores(servicioJugadores);
-                    lc.setServiciorecords(serviciorecords);
+                    lc.setServicioRecords(serviciorecords);
                     lc.setStage(stage);
                 }
         );

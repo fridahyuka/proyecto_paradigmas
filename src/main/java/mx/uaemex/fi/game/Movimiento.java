@@ -6,5 +6,5 @@ public enum Movimiento {
     PAPEL,
     TIJERA,
     LAGARTO,
-    SPOKE,
+    SPOCK,
 }

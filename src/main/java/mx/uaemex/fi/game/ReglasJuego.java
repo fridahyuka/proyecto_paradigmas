@@ -4,5 +4,5 @@ import mx.uaemex.fi.model.data.Jugador;
 
 public interface ReglasJuego {
 
-    public Jugador determinarGanador(Movimiento jugador, Movimiento oponente);
+    public Resultado determinarGanador(Movimiento jugador, Movimiento oponente);
 }

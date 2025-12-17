@@ -30,7 +30,7 @@ public class Launcher extends Application {
                     LoginController lc = (LoginController) controller;
                     lc.setStage(stage);
                     lc.setServicioJugadores(servicioJugadores);
-                    lc.setServiciorecords(servicioRecords);
+                    lc.setServicioRecords(servicioRecords);
                 }
         );
 

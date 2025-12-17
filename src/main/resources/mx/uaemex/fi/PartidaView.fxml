@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="593.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.uaemex.fi.controller.PartidaController">
+
+    <Label layoutX="46.0" layoutY="67.0" prefHeight="27.0" prefWidth="102.0" text="Victorias: ">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+
+    <VBox layoutX="380" layoutY="10.0" prefWidth="76.0" spacing="10">
+        <Label fx:id="lblOponente" text="Computadora:" visible="false" />
+        <ImageView fx:id="imgOponente" fitHeight="120" preserveRatio="true" />
+
+        <Label fx:id="lblJugador" text="Tú:" visible="false" />
+        <ImageView fx:id="imgJugador" fitHeight="120" preserveRatio="true" />
+    </VBox>
+
+    <HBox layoutX="108.0" layoutY="468.0" spacing="20">
+
+        <ImageView fx:id="imgPiedra" fitHeight="100" onMouseClicked="#onPiedraClick" preserveRatio="true">
+            <image><Image url="@piedra.png" /></image>
+            <cursor><Cursor fx:constant="HAND" /></cursor>
+        </ImageView>
+
+        <ImageView fx:id="imgPapel" fitHeight="100" onMouseClicked="#onPapelClick" preserveRatio="true">
+            <image><Image url="@papel.png" /></image>
+            <cursor><Cursor fx:constant="HAND" /></cursor>
+        </ImageView>
+
+        <ImageView fx:id="imgTijera" fitHeight="100" onMouseClicked="#onTijeraClick" preserveRatio="true">
+            <image><Image url="@tijera.png" /></image>
+            <cursor><Cursor fx:constant="HAND" /></cursor>
+        </ImageView>
+
+        <ImageView fx:id="imgLagarto" fitHeight="100" onMouseClicked="#onLagartoClick" preserveRatio="true">
+            <image><Image url="@lagarto.png" /></image>
+            <cursor><Cursor fx:constant="HAND" /></cursor>
+        </ImageView>
+
+        <ImageView fx:id="imgSpock" fitHeight="100" onMouseClicked="#onSpockClick" preserveRatio="true">
+            <image><Image url="@spock.png" /></image>
+            <cursor><Cursor fx:constant="HAND" /></cursor>
+        </ImageView>
+
+    </HBox>
+
+       <Button fx:id="btnIniciar" layoutX="412.0" layoutY="386.0" onAction="#onIniciarClic" prefHeight="27.0" prefWidth="76.0" text="Iniciar">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+   <Label fx:id="lblResultado" layoutX="366.0" layoutY="321.0" prefHeight="71.0" prefWidth="167.0" text="Label" visible="false">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Label>
+   <Label fx:id="lblConteo" layoutX="134.0" layoutY="72.0" text="0" />
+   <Label fx:id="lblMensaje" layoutX="409.0" layoutY="427.0" text="Elige una opcion: " />
+
+</AnchorPane>

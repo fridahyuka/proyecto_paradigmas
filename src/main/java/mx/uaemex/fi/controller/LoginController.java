@@ -62,7 +62,18 @@ public class LoginController extends AbstractController {
         lblMessage.setText("✔ Bienvenido " + usuario);
         System.out.println("Sesión iniciada con éxito");
 
-        // 👉 aquí puedes abrir otra ventana
+        // Abrir ventana del juego
+
+        NavigationHelper.goTo(stage,
+                "/mx/uaemex/fi/PartidaView.fxml",
+                "Partida",
+                controller->{
+                    PartidaController pc= (PartidaController) controller;
+                    pc.setServicioJugadores(servicioJugadores);
+                    pc.setServicioRecords(serviciorecords);
+                    pc.setStage(stage);
+                }
+        );
 
 
     }
@@ -76,7 +87,7 @@ public class LoginController extends AbstractController {
                 controller -> {
                     RegistroController rc = (RegistroController) controller;
                     rc.setServicioJugadores(servicioJugadores);
-                    rc.setServiciorecords(serviciorecords);
+                    rc.setServicioRecords(serviciorecords);
                     rc.setStage(stage);
                 }
         );
