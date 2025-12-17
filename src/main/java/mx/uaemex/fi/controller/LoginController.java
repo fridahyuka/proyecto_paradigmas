@@ -64,6 +64,8 @@ public class LoginController extends AbstractController {
 
         // Abrir ventana del juego
 
+
+
         NavigationHelper.goTo(stage,
                 "/mx/uaemex/fi/PartidaView.fxml",
                 "Partida",
@@ -72,6 +74,7 @@ public class LoginController extends AbstractController {
                     pc.setServicioJugadores(servicioJugadores);
                     pc.setServicioRecords(serviciorecords);
                     pc.setStage(stage);
+                    pc.setJugador(j);
                 }
         );
 

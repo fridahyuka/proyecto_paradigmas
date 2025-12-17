@@ -12,9 +12,9 @@
 
 <AnchorPane prefHeight="593.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.uaemex.fi.controller.PartidaController">
 
-    <Label layoutX="46.0" layoutY="67.0" prefHeight="27.0" prefWidth="102.0" text="Victorias: ">
+    <Label layoutX="24.0" layoutY="67.0" prefHeight="27.0" prefWidth="167.0" text="Invicto: ">
       <font>
-         <Font size="18.0" />
+         <Font size="16.0" />
       </font></Label>
 
     <VBox layoutX="380" layoutY="10.0" prefWidth="76.0" spacing="10">
@@ -54,17 +54,28 @@
 
     </HBox>
 
-       <Button fx:id="btnIniciar" layoutX="412.0" layoutY="386.0" onAction="#onIniciarClic" prefHeight="27.0" prefWidth="76.0" text="Iniciar">
+       <Button fx:id="btnIniciar" layoutX="334.0" layoutY="385.0" onAction="#onIniciarClic" prefHeight="27.0" prefWidth="167.0" text="Iniciar">
         <cursor>
             <Cursor fx:constant="HAND" />
         </cursor>
+      <font>
+         <Font size="18.0" />
+      </font>
     </Button>
    <Label fx:id="lblResultado" layoutX="366.0" layoutY="321.0" prefHeight="71.0" prefWidth="167.0" text="Label" visible="false">
       <font>
          <Font size="36.0" />
       </font>
    </Label>
-   <Label fx:id="lblConteo" layoutX="134.0" layoutY="72.0" text="0" />
-   <Label fx:id="lblMensaje" layoutX="409.0" layoutY="427.0" text="Elige una opcion: " />
+   <Label fx:id="lblConteo" layoutX="97.0" layoutY="67.0" text="0">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+   <Label fx:id="lblMensaje" layoutX="409.0" layoutY="427.0" text="Elige una opcion: " visible="false" />
+   <Button layoutX="792.0" layoutY="41.0" mnemonicParsing="false" onAction="#onMenuClic" prefHeight="51.0" prefWidth="94.0" text="≡">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Button>
 
 </AnchorPane>

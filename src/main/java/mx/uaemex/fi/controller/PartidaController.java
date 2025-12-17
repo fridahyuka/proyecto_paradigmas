@@ -9,6 +9,10 @@ import javafx.scene.input.MouseEvent;
 import mx.uaemex.fi.game.Movimiento;
 import mx.uaemex.fi.game.ReglasPPT;
 import mx.uaemex.fi.game.Resultado;
+import mx.uaemex.fi.model.data.Record;
+import mx.uaemex.fi.util.NavigationHelper;
+
+import java.util.Date;
 import java.util.Objects;
 
 
@@ -31,6 +35,8 @@ public class PartidaController extends AbstractController{
     private boolean partidaIniciada = false;
     private int victorias;
 
+
+
     @FXML
     public void onIniciarClic() {
         partidaIniciada = true;
@@ -38,9 +44,11 @@ public class PartidaController extends AbstractController{
         lblJugador.setVisible(false);
         lblOponente.setVisible(false);
         lblResultado.setVisible(false);
-
+        btnIniciar.setVisible(false);
         imgJugador.setImage(null);
         imgOponente.setImage(null);
+
+        System.out.println(this.jugador.getLogin());
     }
 
 
@@ -69,8 +77,28 @@ public class PartidaController extends AbstractController{
         jugar(Movimiento.SPOCK);
     }
 
+    @FXML
+    public void onMenuClic(){
+        NavigationHelper.goTo(stage,
+                "/mx/uaemex/fi/MenuView.fxml",
+                "Menú",
+                controller->{
+                    MenuController mc =(MenuController) controller;
+                            mc.setServicioJugadores(servicioJugadores);
+                            mc.setServicioRecords(serviciorecords);
+                            mc.setJugador(jugador);
+                            mc.setStage(stage);
+                }
+        );
+    }
+
 
     private void jugar(Movimiento jugador) {
+
+        if(this.jugador==null){
+            lblMensaje.setText("Jugador no encontrado...");
+            return;
+        }
 
         if (!partidaIniciada) {
             return;
@@ -82,6 +110,19 @@ public class PartidaController extends AbstractController{
         if(resultado==Resultado.GANASTE){
             victorias++;
         }else if(resultado==Resultado.PERDISTE){
+            //si pierde crea un record, lo guarda, y reinicia el conteo. Si pierde en el primer jugada no crea el record
+
+            if(victorias==0){
+                return;
+            }
+
+            Record record=new Record();
+            record.setJugador(this.jugador);
+            record.setRecord(victorias);
+            record.setFecha(new Date());
+
+            serviciorecords.insertar(record);
+
             victorias=0;
         }
 
@@ -100,6 +141,7 @@ public class PartidaController extends AbstractController{
 
 
         btnIniciar.setText("Volver a jugar");
+        btnIniciar.setVisible(true);
         partidaIniciada = false;
     }
 

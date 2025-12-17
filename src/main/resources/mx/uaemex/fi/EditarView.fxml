@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="mx.uaemex.fi.controller.EditarController">
+
+    <center>
+        <VBox alignment="CENTER" spacing="15" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20" left="40" right="40" top="20" />
+            </padding>
+
+            <!-- TÍTULO -->
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Editar Perfil" />
+
+            <!-- USUARIO -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label prefWidth="180" text="Usuario:" />
+                <TextField fx:id="fldLogin" prefWidth="250" />
+            </HBox>
+
+            <!-- CORREO -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label prefWidth="180" text="Correo:" />
+                <TextField fx:id="fldCorreo" prefWidth="250" />
+            </HBox>
+
+            <!-- CONTRASEÑA ACTUAL -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label prefWidth="180" text="Contraseña actual:" />
+                <PasswordField fx:id="fldPasswordActual" prefWidth="250" />
+            </HBox>
+
+            <!-- NUEVA CONTRASEÑA -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label prefWidth="180" text="Nueva contraseña:" />
+                <PasswordField fx:id="fldNuevaPassword" prefWidth="250" />
+            </HBox>
+
+            <!-- CONFIRMAR NUEVA CONTRASEÑA -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label prefWidth="180" text="Confirmar contraseña:" />
+                <PasswordField fx:id="fldConfirmarPassword" prefWidth="250" />
+            </HBox>
+
+            <!-- NOTA -->
+            <Label style="-fx-font-size: 11px; -fx-text-fill: gray;"
+                   text="Nota: Deja los campos de contraseña vacíos si no quieres cambiarla" />
+
+            <!-- ERROR -->
+            <Label fx:id="lblError" alignment="CENTER" style="-fx-text-fill: red;"
+                   maxWidth="400" wrapText="true" />
+
+            <!-- BOTONES -->
+            <HBox alignment="CENTER" spacing="20">
+                <Button onAction="#onGuardarClic" prefWidth="120" text="Guardar">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+
+                <Button onAction="#onCancelarClic" prefWidth="120"
+                        style="-fx-background-color: #cccccc;" text="Cancelar">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </HBox>
+
+        </VBox>
+    </center>
+</BorderPane>

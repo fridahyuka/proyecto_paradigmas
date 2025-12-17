@@ -84,6 +84,7 @@ public class RegistroController extends AbstractController{
                     pc.setServicioJugadores(servicioJugadores);
                     pc.setServicioRecords(serviciorecords);
                     pc.setStage(stage);
+                    pc.setJugador(nuevo);
                 }
         );
     }
