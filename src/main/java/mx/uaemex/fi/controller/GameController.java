@@ -25,4 +25,12 @@ public class GameController {
     public void setJugadoresDAO(JugadoresDAO jugadoresDAO) {
         this.jugadoresDAO = jugadoresDAO;
     }
+
+    public ModoJuego getModJuego() {
+        return modJuego;
+    }
+
+    public void setModJuego(ModoJuego modJuego) {
+        this.modJuego = modJuego;
+    }
 }
