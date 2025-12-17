@@ -28,27 +28,27 @@
     <HBox layoutX="108.0" layoutY="468.0" spacing="20">
 
         <ImageView fx:id="imgPiedra" fitHeight="100" onMouseClicked="#onPiedraClick" preserveRatio="true">
-            <image><Image url="@piedra.png" /></image>
+            <image><Image url="@images/piedra.png" /></image>
             <cursor><Cursor fx:constant="HAND" /></cursor>
         </ImageView>
 
         <ImageView fx:id="imgPapel" fitHeight="100" onMouseClicked="#onPapelClick" preserveRatio="true">
-            <image><Image url="@papel.png" /></image>
+            <image><Image url="@images/papel.png" /></image>
             <cursor><Cursor fx:constant="HAND" /></cursor>
         </ImageView>
 
         <ImageView fx:id="imgTijera" fitHeight="100" onMouseClicked="#onTijeraClick" preserveRatio="true">
-            <image><Image url="@tijera.png" /></image>
+            <image><Image url="@images/tijera.png" /></image>
             <cursor><Cursor fx:constant="HAND" /></cursor>
         </ImageView>
 
         <ImageView fx:id="imgLagarto" fitHeight="100" onMouseClicked="#onLagartoClick" preserveRatio="true">
-            <image><Image url="@lagarto.png" /></image>
+            <image><Image url="@images/lagarto.png" /></image>
             <cursor><Cursor fx:constant="HAND" /></cursor>
         </ImageView>
 
         <ImageView fx:id="imgSpock" fitHeight="100" onMouseClicked="#onSpockClick" preserveRatio="true">
-            <image><Image url="@spock.png" /></image>
+            <image><Image url="@images/spock.png" /></image>
             <cursor><Cursor fx:constant="HAND" /></cursor>
         </ImageView>
 

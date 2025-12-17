@@ -107,7 +107,7 @@ public class PartidaController extends AbstractController{
         img.setImage(new Image(
                 Objects.requireNonNull(
                         getClass().getResourceAsStream(
-                                "/mx/uaemex/fi/" + m.name().toLowerCase() + ".png"
+                                "/mx/uaemex/fi/images/" + m.name().toLowerCase() + ".png"
                         ),
                         "No se encontró la imagen de " + m
                 )
