@@ -9,7 +9,7 @@ Proyecto realizado para la Facultad de Ingeniería de la Universidad Autónoma d
 3. Angel Yahir Albarrán Cruz
 4. Kevin Alejandro Nabor Matias
 5. Jesús Emmanuel Díaz Vera
-6. Aarón Daniel Díaz Msrtínez
+6. Aarón Daniel Díaz Martínez
 
 ## Instalación
 
