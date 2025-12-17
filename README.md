@@ -48,3 +48,16 @@ sudo -u postgres psql -d pptls -f schema.sql
 ![Diagrama UML de secuencia para jugar en partida local](docs/uml/PPT%20CLASS%20UML%20Local%20match%20Sequence%20Diagram.png "Diagrama UML de secuencia para jugar en partida local")
 
 ![Diagrama UML de secuencia para jugar en partida online](docs/uml/PPT%20CLASS%20UML%20Online%20match%20Sequence%20Diagram.png "Diagrama UML de secuencia para jugar en partida online")
+
+## Diagrama de actividades
+
+![Diagrama de actividades - Login](docs/uml/DIAGRAMA%20DE%20ACTIVIDADES%20%E2%80%94%20LOGIN%20(AUTH).png)
+
+![Diagrama de actividades - Registro](docs/uml/DIAGRAMA%20DE%20ACTIVIDADES%20%E2%80%94%20REGISTRO%20(SIGN%20UP).png)
+
+![Diagrama de actividades - Ver tutorial](docs/uml/DIAGRAMA%20DE%20ACTIVIDADES%20%E2%80%94%20VER%20TUTORIAL.png)
+
+![Diagrama de actividades - Partida local](docs/uml/DIAGRAMA%20DE%20ACTIVIDADES%20%E2%80%94%20PARTIDA%20LOCAL.png)
+
+![Diagrama de actividades - Partida online](docs/uml/DIAGRAMA%20DE%20ACTIVIDADES%20%E2%80%94%20PARTIDA%20ONLINE.png)
+
