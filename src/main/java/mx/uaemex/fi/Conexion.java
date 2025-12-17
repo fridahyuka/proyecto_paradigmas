@@ -13,24 +13,20 @@ public class Conexion {
 
     public static JugadoresService conectarLocal() {
         try {
-            // Cambia la URL de Oracle a PostgreSQL
-            String url = "jdbc:postgresql://localhost:5432/pptls";  // Tu base de datos
-            String user = "postgres";  // Usuario por defecto
-            String password = "123";   // Tu contraseña
 
-            // Registrar driver (opcional en versiones nuevas, pero seguro)
+            String url = "jdbc:postgresql://localhost:5432/pptls";
+            String user = "postgres";
+            String password = "123";
+
             Class.forName("org.postgresql.Driver");
 
             Connection conn = DriverManager.getConnection(url, user, password);
 
-            // Aquí necesitarás un DAO específico para PostgreSQL
             JugadoresDAOPsqlImp dao = new JugadoresDAOPsqlImp();
             dao.setConexion(conn);
 
             servicio = new JugadoresServicesLocal();
             ((JugadoresServicesLocal) servicio).setDao(dao);
-
-            System.out.println("✅ Conectado a PostgreSQL - Base: pptls");
 
             return servicio;
 
