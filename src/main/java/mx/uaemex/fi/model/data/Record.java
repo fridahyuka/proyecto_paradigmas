@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Record extends ElementoConID implements Data {
     private Jugador jugador;
-    private Juego juego;
     private int record;
     private Date fecha;
 
@@ -17,14 +16,6 @@ public class Record extends ElementoConID implements Data {
 
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
-    }
-
-    public Juego getJuego() {
-        return juego;
-    }
-
-    public void setJuego(Juego juego) {
-        this.juego = juego;
     }
 
     public Date getFecha() {
@@ -45,7 +36,7 @@ public class Record extends ElementoConID implements Data {
 
     @Override
     public String toString() {
-        return "Record [jugador=" + jugador + ", juego=" + juego + ", record=" + record + ", fecha=" + fecha + "]";
+        return "Record [jugador: " + jugador +  ", record: " + record + ", fecha: " + fecha + "]";
     }
 
 }

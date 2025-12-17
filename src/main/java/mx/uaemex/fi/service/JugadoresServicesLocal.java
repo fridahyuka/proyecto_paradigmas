@@ -8,6 +8,9 @@ import java.util.ArrayList;
 public class JugadoresServicesLocal implements JugadoresService{
     private JugadoresDAO dao;
 
+    public JugadoresServicesLocal() {
+    }
+
     public void setDao(JugadoresDAO dao) {
         this.dao = dao;
     }
