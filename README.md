@@ -9,10 +9,42 @@ Proyecto realizado para la Facultad de Ingeniería de la Universidad Autónoma d
 3. Angel Yahir Albarrán Cruz
 4. Kevin Alejandro Nabor Matias
 5. Jesús Emmanuel Díaz Vera
+
+## Instalación
+
+### Requisitos
+
+1. Java SE. instalado
+2. Postgre instalado
+   2.1 Es necesario el usuario "postgre" con contraseña "123"
+
+### Pasos
+
+Es necesario crear la base de datos, para ello es necesario ejecutar el siguiente comando el la raíz de este repositorio.
+
+```bash
+sudo -u postgres psql -d pptls -f schema.sql
+
+```
+
 # Diagramas UML
+
+### Diagrama de caso de uso
+
+![Diagrama UML de caso de uso ](docs/uml/PPT%20CLASS%20UML%20USE%20CASE.png "Diagrama UML de caso de uso")
 
 ## Diagrama de clases
 
-A continuación se muestra el diagrama de clases con el cual se desarrolló el proyecto
-
 ![Diagrama UML de clases](docs/uml/PPT%20UML%20Class%20Diagram.png "Diagrama UML de clases")
+
+## Diagramas de secuencia
+
+![Diagrama UML de secuencia para inicio de sesión](docs/uml/PPT%20CLASS%20UML%20AUTH%20Sequence%20Diagram%20.png "Diagrama UML de secuencia para inicio de sesión")
+
+![Diagrama UML de secuencia para registrarse](docs/uml/PPT%20CLASS%20UML%20Sign%20up%20Sequence%20Diagram.png "Diagrama UML de secuencia para registrarse")
+
+![Diagrama UML de secuencia para ver tutorial](docs/uml/PPT%20CLASS%20UML%20Tutorial%20Sequence%20Diagram.png "Diagrama UML de secuencia para ver tutorial")
+
+![Diagrama UML de secuencia para jugar en partida local](docs/uml/PPT%20CLASS%20UML%20Local%20match%20Sequence%20Diagram.png "Diagrama UML de secuencia para jugar en partida local")
+
+![Diagrama UML de secuencia para jugar en partida online](docs/uml/PPT%20CLASS%20UML%20Online%20match%20Sequence%20Diagram.png "Diagrama UML de secuencia para jugar en partida online")
