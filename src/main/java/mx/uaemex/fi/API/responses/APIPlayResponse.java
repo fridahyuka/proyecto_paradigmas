@@ -1,15 +1,15 @@
-package mx.uaemex.fi.API;
+package mx.uaemex.fi.API.responses;
 
 import java.util.Date;
 
-public class APIRespuesta {
+public class APIPlayResponse {
 
     private char resultado;
     private Date fecha;
     private char eleccionJugador;
     private char eleccionAPI;
 
-    public APIRespuesta() {
+    public APIPlayResponse() {
     }
 
     public char getResultado() {

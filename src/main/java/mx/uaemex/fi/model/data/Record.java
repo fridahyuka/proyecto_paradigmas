@@ -42,4 +42,10 @@ public class Record extends ElementoConID implements Data {
     public void setRecord(int record) {
         this.record = record;
     }
+
+    @Override
+    public String toString() {
+        return "Record [jugador=" + jugador + ", juego=" + juego + ", record=" + record + ", fecha=" + fecha + "]";
+    }
+
 }

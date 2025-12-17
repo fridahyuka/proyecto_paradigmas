@@ -1,17 +1,15 @@
-package mx.uaemex.fi;
+package mx.uaemex.fi.service;
 
 import mx.uaemex.fi.model.JugadoresDAOPsqlImp;
-import mx.uaemex.fi.service.JugadoresService;
-import mx.uaemex.fi.service.JugadoresServicesLocal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class Conexion {
+public class ConexionPostgres {
 
     private static JugadoresService servicio;
 
-    public static JugadoresService conectarLocal() {
+    public static JugadoresService conectar() {
         try {
 
             String url = "jdbc:postgresql://localhost:5432/pptls";
