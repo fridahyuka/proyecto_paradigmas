@@ -62,9 +62,9 @@ sudo -u postgres psql -d pptls -f schema.sql
 
 ![Diagrama de actividades - Partida online](docs/uml/DIAGRAMA%20DE%20ACTIVIDADES%20%E2%80%94%20PARTIDA%20ONLINE.png)
 
-### Descripción de Casos de Uso
+## Descripción de Casos de Uso
 
-## Caso de uso: Autenticarse
+### Caso de uso: Autenticarse
 
 | Elemento           | Descripción |
 |--------------------|-------------|
@@ -76,7 +76,7 @@ sudo -u postgres psql -d pptls -f schema.sql
 | Flujo principal    | 1. El jugador selecciona iniciar sesión.<br>2. El sistema solicita credenciales.<br>3. El jugador ingresa usuario y contraseña.<br>4. El sistema valida los datos.<br>5. El sistema concede el acceso. |
 | Flujos alternos    | 4a. Usuario no existe.<br>4b. Contraseña incorrecta.<br>4c. Jugador inactivo. |
 
-## Caso de uso: Iniciar sesión
+### Caso de uso: Iniciar sesión
 
 | Elemento           | Descripción |
 |--------------------|-------------|
@@ -87,7 +87,7 @@ sudo -u postgres psql -d pptls -f schema.sql
 | Postcondiciones    | Sesión iniciada correctamente. |
 | Flujo principal    | 1. El jugador solicita iniciar sesión.<br>2. El sistema solicita credenciales.<br>3. El jugador ingresa los datos.<br>4. El sistema valida la información.<br>5. El sistema muestra el menú principal. |
 
-## Caso de uso: Ingresar credenciales
+### Caso de uso: Ingresar credenciales
 
 | Elemento           | Descripción |
 |--------------------|-------------|
@@ -98,7 +98,7 @@ sudo -u postgres psql -d pptls -f schema.sql
 | Postcondiciones    | Credenciales enviadas para validación. |
 | Flujo principal    | 1. El sistema muestra el formulario.<br>2. El jugador ingresa usuario y contraseña.<br>3. El sistema recibe los datos. |
 
-## Caso de uso: Mostrar menú principal
+### Caso de uso: Mostrar menú principal
 
 | Elemento           | Descripción |
 |--------------------|-------------|
@@ -109,7 +109,7 @@ sudo -u postgres psql -d pptls -f schema.sql
 | Postcondiciones    | El jugador puede seleccionar una acción. |
 | Flujo principal    | 1. El sistema despliega el menú principal.<br>2. El jugador selecciona una opción. |
 
-## Caso de uso: Ver tutorial
+### Caso de uso: Ver tutorial
 
 | Elemento           | Descripción |
 |--------------------|-------------|
@@ -120,7 +120,7 @@ sudo -u postgres psql -d pptls -f schema.sql
 | Postcondiciones    | El jugador conoce las reglas del juego. |
 | Flujo principal    | 1. El jugador selecciona ver tutorial.<br>2. El sistema muestra el tutorial. |
 
-## Caso de uso: Ver récords
+### Caso de uso: Ver récords
 
 | Elemento           | Descripción |
 |--------------------|-------------|
@@ -131,7 +131,7 @@ sudo -u postgres psql -d pptls -f schema.sql
 | Postcondiciones    | Récords mostrados al jugador. |
 | Flujo principal    | 1. El jugador selecciona ver récords.<br>2. El sistema consulta los datos.<br>3. El sistema muestra los resultados. |
 
-## Caso de uso: Jugar vs máquina
+### Caso de uso: Jugar vs máquina
 
 | Elemento           | Descripción |
 |--------------------|-------------|
@@ -142,7 +142,7 @@ sudo -u postgres psql -d pptls -f schema.sql
 | Postcondiciones    | El resultado de la partida queda registrado. |
 | Flujo principal    | 1. El jugador selecciona jugar vs máquina.<br>2. El sistema solicita movimiento.<br>3. El sistema genera movimiento de la máquina.<br>4. El sistema evalúa la partida.<br>5. El sistema muestra el resultado. |
 
-## Caso de uso: Seleccionar movimiento
+### Caso de uso: Seleccionar movimiento
 
 | Elemento           | Descripción |
 |--------------------|-------------|
@@ -153,7 +153,7 @@ sudo -u postgres psql -d pptls -f schema.sql
 | Postcondiciones    | Movimiento del jugador registrado. |
 | Flujo principal    | 1. El sistema muestra opciones.<br>2. El jugador selecciona su movimiento. |
 
-## Caso de uso: Mostrar resultado
+### Caso de uso: Mostrar resultado
 
 | Elemento           | Descripción |
 |--------------------|-------------|
