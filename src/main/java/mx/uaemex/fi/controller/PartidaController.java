@@ -53,7 +53,7 @@ public class PartidaController extends AbstractController {
         imgJugador.setImage(null);
         imgOponente.setImage(null);
 
-        System.out.println(this.jugador.getLogin());
+
     }
 
     @FXML
@@ -82,7 +82,7 @@ public class PartidaController extends AbstractController {
     }
 
     @FXML
-    public void onMenuClic() {
+    public void onMenuClick() {
         NavigationHelper.goTo(stage,
                 "/mx/uaemex/fi/MenuView.fxml",
                 "Menú",
@@ -90,7 +90,7 @@ public class PartidaController extends AbstractController {
                     MenuController mc = (MenuController) controller;
                     mc.setServicioJugadores(servicioJugadores);
                     mc.setServicioRecords(serviciorecords);
-                    mc.setJugador(jugador);
+                    mc.setJugador(this.jugador);
                     mc.setStage(stage);
                 });
     }

@@ -28,7 +28,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button mnemonicParsing="false" onAction="#onRegistrarClic" text="Registrarse">
+   <Button mnemonicParsing="false" onAction="#onRegistrarClick" text="Registrarse">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor>

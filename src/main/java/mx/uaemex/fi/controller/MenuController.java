@@ -4,8 +4,9 @@ import javafx.fxml.FXML;
 import mx.uaemex.fi.util.NavigationHelper;
 
 public class MenuController extends AbstractController {
+
     @FXML
-    public void onJugarClic() {
+    public void onJugarClick() {
         NavigationHelper.goTo(stage,
                 "/mx/uaemex/fi/PartidaView.fxml",
                 "Partida",
@@ -14,12 +15,12 @@ public class MenuController extends AbstractController {
                     pc.setServicioJugadores(servicioJugadores);
                     pc.setServicioRecords(serviciorecords);
                     pc.setStage(stage);
-                    pc.setJugador(jugador);
+                    pc.setJugador(this.jugador);
                 });
     }
 
     @FXML
-    public void onRecordsClic() {
+    public void onRecordsClick() {
         NavigationHelper.goTo(stage,
                 "/mx/uaemex/fi/RecordsView.fxml",
                 "Records",
@@ -33,17 +34,18 @@ public class MenuController extends AbstractController {
     }
 
     @FXML
-    public void onEditarClic() {
+    public void onEditarClick() {
         NavigationHelper.goTo(
                 stage,
                 "/mx/uaemex/fi/EditarView.fxml",
                 "Editar Perfil",
                 controller -> {
+
                     EditarController ec = (EditarController) controller;
+                    ec.setJugador(this.jugador);
                     ec.setServicioJugadores(servicioJugadores);
                     ec.setServicioRecords(serviciorecords);
                     ec.setStage(stage);
-                    ec.setJugador(jugador);
                 });
     }
 

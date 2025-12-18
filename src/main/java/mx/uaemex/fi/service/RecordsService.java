@@ -6,12 +6,15 @@ import mx.uaemex.fi.model.data.Record;
 import java.util.ArrayList;
 
 public interface RecordsService {
-    public void insertar(Record record);
+     void insertar(Record record);
 
-    public ArrayList<Record> consultar(Jugador j);
+     ArrayList<Record> consultar(Jugador j);
 
-    public void actualizar(Record record);
+     Record consultarMax(Jugador j);
 
-    public void borrar(Record record);
+     void actualizar(Record record);
+
+     void borrar(Record record);
+
 
 }

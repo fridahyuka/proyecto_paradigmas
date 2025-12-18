@@ -3,6 +3,8 @@ package mx.uaemex.fi.service;
 import mx.uaemex.fi.model.RecordsDAO;
 import mx.uaemex.fi.model.data.Jugador;
 import mx.uaemex.fi.model.data.Record;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RecordsServiceLocal implements RecordsService {
@@ -24,6 +26,10 @@ public class RecordsServiceLocal implements RecordsService {
     @Override
     public ArrayList<Record> consultar(Jugador j) {
         return dao.consultar(j);
+    }
+
+    public Record consultarMax(Jugador j) {
+        return dao.consultarMax(j);
     }
 
     @Override

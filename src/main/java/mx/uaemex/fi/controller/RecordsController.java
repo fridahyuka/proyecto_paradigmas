@@ -3,6 +3,8 @@ package mx.uaemex.fi.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -11,6 +13,10 @@ import mx.uaemex.fi.model.data.Record;
 import mx.uaemex.fi.service.RecordsService;
 import mx.uaemex.fi.util.NavigationHelper;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 public class RecordsController extends AbstractController {
@@ -22,37 +28,72 @@ public class RecordsController extends AbstractController {
     private TableColumn<Record, Integer> colRecord;
 
     @FXML
-    private TableColumn<Record, Object> colFecha; // Object para Date (así evitas problemas por ahora)
+    private TableColumn<Record, Date> colFecha;
+
+    @FXML
+    private Label lblMejorRecord;
 
     private ObservableList<Record> listaRecords;
 
+    private static final DateTimeFormatter FORMATO_FECHA =
+            DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
     @FXML
     public void initialize() {
-        // Inicializar la lista observable
+
         listaRecords = FXCollections.observableArrayList();
         tblRecords.setItems(listaRecords);
-
-        // Enlazar columnas con atributos del modelo
         colRecord.setCellValueFactory(new PropertyValueFactory<>("record"));
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        colFecha.setCellFactory(col -> new TableCell<Record, Date>() {
+            @Override
+            protected void updateItem(Date fecha, boolean empty) {
+                super.updateItem(fecha, empty);
+
+                if (empty || fecha == null) {
+                    setText(null);
+                } else {
+                    LocalDate localDate = fecha.toInstant()
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDate();
+
+                    setText(localDate.format(FORMATO_FECHA));
+                }
+            }
+        });
     }
 
-    /**
-     * Se llama después de setJugador y setServicioRecords
-     */
     private void cargarRecords() {
-        // Verificar que ambos componentes necesarios estén inicializados
-        if (this.jugador == null || this.serviciorecords == null) {
-            System.out.println("Falta jugador o servicio para cargar records");
+
+        if (jugador == null || serviciorecords == null) {
             return;
         }
 
         try {
+
             List<Record> records = serviciorecords.consultar(jugador);
             listaRecords.setAll(records);
-            System.out.println("Records cargados: " + records.size());
+
+
+
+            Record max = serviciorecords.consultarMax(jugador);
+
+            if (max != null && max.getFecha() != null) {
+
+                LocalDate fecha = ((java.sql.Date) max.getFecha()).toLocalDate();
+
+                lblMejorRecord.setText(
+                        "Tu mejor marca: " +
+                                max.getRecord() + " victorias, fecha " +
+                                fecha.format(FORMATO_FECHA)
+                );
+
+            } else {
+                lblMejorRecord.setText("Tu mejor marca: -");
+            }
+
+
         } catch (Exception e) {
-            System.err.println("Error al cargar records: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -69,13 +110,8 @@ public class RecordsController extends AbstractController {
         cargarRecordsSiListo();
     }
 
-    /**
-     * Método auxiliar para cargar records solo cuando ambos componentes estén
-     * listos
-     */
     private void cargarRecordsSiListo() {
-        // Solo cargar si ambos están inicializados
-        if (this.jugador != null && this.serviciorecords != null) {
+        if (jugador != null && serviciorecords != null) {
             cargarRecords();
         }
     }
@@ -97,21 +133,21 @@ public class RecordsController extends AbstractController {
 
     @FXML
     public void onJugarClic() {
-        NavigationHelper.goTo(stage,
+        NavigationHelper.goTo(
+                stage,
                 "/mx/uaemex/fi/PartidaView.fxml",
                 "Partida",
                 controller -> {
                     PartidaController pc = (PartidaController) controller;
                     pc.setServicioJugadores(servicioJugadores);
                     pc.setServicioRecords(serviciorecords);
+                    pc.setJugador(jugador);
                     pc.setStage(stage);
-                    pc.setJugador(this.jugador);
                 });
     }
 
     @FXML
     public void onEditarClic() {
-
+        // pendiente
     }
-
 }

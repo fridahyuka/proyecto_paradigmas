@@ -103,7 +103,7 @@
    </Label>
    <Label fx:id="lblMensaje" layoutX="409.0" layoutY="427.0" text="Elige una opcion: "
       visible="false" />
-   <Button layoutX="792.0" layoutY="41.0" mnemonicParsing="false" onAction="#onMenuClic"
+   <Button layoutX="792.0" layoutY="41.0" mnemonicParsing="false" onAction="#onMenuClick"
       prefHeight="51.0" prefWidth="94.0" text="≡">
       <font>
          <Font size="24.0" />

@@ -56,6 +56,35 @@ public class RecordsDAOPsqlImp extends AbstractSqlDAO implements RecordsDAO {
     }
 
     @Override
+    public Record consultarMax(Jugador j) {
+
+        Record maximo = null;
+
+        String sql = " SELECT * FROM records WHERE jugador_id = ? AND record = (SELECT MAX(record) FROM records WHERE jugador_id = ? ) ORDER BY fecha ASC LIMIT 1 ";
+
+        try (PreparedStatement st = conexion.prepareStatement(sql)) {
+
+            st.setInt(1, j.getId());
+            st.setInt(2, j.getId());
+
+            ResultSet res = st.executeQuery();
+
+            if (res.next()) {
+                maximo = new Record();
+                maximo.setId(res.getInt("id"));
+                maximo.setRecord(res.getInt("record"));
+                maximo.setFecha(res.getDate("fecha"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return maximo;
+    }
+
+
+    @Override
     public void actualizar(Record record) {
 
         String sql = "UPDATE records SET record = ?, fecha = ? WHERE id = ?";

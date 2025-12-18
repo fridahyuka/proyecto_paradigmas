@@ -11,9 +11,7 @@ public abstract class AbstractController {
     protected Stage stage;
     protected Jugador jugador;
 
-    public Stage getStage() {
-        return stage;
-    }
+
 
     public void setStage(Stage satage) {
         this.stage = satage;
@@ -22,10 +20,7 @@ public abstract class AbstractController {
     public void setServicioJugadores(JugadoresService servicioJugadores) {
         this.servicioJugadores = servicioJugadores;
     }
-
-    public RecordsService getServicioRecords() {
-        return serviciorecords;
-    }
+    
 
     public void setServicioRecords(RecordsService serviciorecords) {
         this.serviciorecords = serviciorecords;

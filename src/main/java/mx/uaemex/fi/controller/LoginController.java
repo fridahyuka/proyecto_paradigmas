@@ -80,7 +80,7 @@ public class LoginController extends AbstractController {
     }
 
     @FXML
-    public void onRegistrarClic() {
+    public void onRegistrarClick() {
         NavigationHelper.goTo(
                 stage,
                 "/mx/uaemex/fi/RegistroView.fxml",

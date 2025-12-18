@@ -22,7 +22,7 @@ public class RegistroController extends AbstractController {
     private Label lblError;
 
     @FXML
-    public void onRegistrarClic() {
+    public void onRegistrarClick() {
 
         lblError.setText("");
 
@@ -90,7 +90,7 @@ public class RegistroController extends AbstractController {
     }
 
     @FXML
-    public void onIniciarSesionClic() {
+    public void onIniciarSesionClick() {
         NavigationHelper.goTo(
                 stage,
                 "/mx/uaemex/fi/LoginView.fxml",

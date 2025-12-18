@@ -23,20 +23,13 @@ public class EditarController extends AbstractController {
     @FXML
     private Label lblError;
 
-    @FXML
-    public void initialize() {
-        if (jugador != null) {
-            cargarDatosJugador();
-        }
-    }
-
     private void cargarDatosJugador() {
         fldLogin.setText(jugador.getLogin());
         fldCorreo.setText(jugador.getCorreo());
     }
 
     @FXML
-    public void onGuardarClic() {
+    public void onGuardarClick() {
         lblError.setText("");
 
         String login = fldLogin.getText();
@@ -67,7 +60,7 @@ public class EditarController extends AbstractController {
             }
         }
 
-        // Validar contraseña actual si se quiere cambiar la contraseña
+
         boolean quiereCambiarPassword = !nuevaPassword.isBlank() || !confirmarPassword.isBlank();
 
         if (quiereCambiarPassword) {
@@ -124,7 +117,7 @@ public class EditarController extends AbstractController {
     }
 
     @FXML
-    public void onCancelarClic() {
+    public void onCancelarClick() {
         regresarAlMenu();
     }
 
@@ -146,10 +139,14 @@ public class EditarController extends AbstractController {
         lblError.setText(mensaje);
         lblError.setStyle("-fx-text-fill: red;");
     }
-
     @Override
     public void setJugador(Jugador jugador) {
-        super.setJugador(jugador);
-        cargarDatosJugador();
+        this.jugador = jugador;
+
+        if (jugador != null) {
+            cargarDatosJugador();
+        }
     }
+
+
 }

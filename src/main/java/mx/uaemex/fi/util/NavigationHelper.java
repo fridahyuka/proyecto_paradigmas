@@ -25,9 +25,7 @@ public class NavigationHelper {
 
             stage.setTitle(windowTitle);
             stage.setScene(scene);
-            stage.setResizable(false); // opcional
-
-            // 🚫 NO modificar tamaño → usa el del FXML
+            stage.setResizable(false);
 
         } catch (IOException e) {
             System.err.println("Error cargando escena: " + fxmlPath);
@@ -35,7 +33,4 @@ public class NavigationHelper {
         }
     }
 
-    public static void goTo(Stage stage, String fxmlPath, String windowTitle) {
-        goTo(stage, fxmlPath, windowTitle, null);
-    }
 }

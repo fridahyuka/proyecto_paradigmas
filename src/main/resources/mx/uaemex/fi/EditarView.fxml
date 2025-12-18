@@ -63,14 +63,14 @@
 
             <!-- BOTONES -->
             <HBox alignment="CENTER" spacing="20">
-                <Button onAction="#onGuardarClic" prefWidth="120" text="Guardar">
+                <Button onAction="#onGuardarClick" prefWidth="120" text="Guardar">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
 
-                <Button onAction="#onCancelarClic" prefWidth="120"
-                    style="-fx-background-color: #cccccc;" text="Cancelar">
+                <Button onAction="#onCancelarClick" prefWidth="120"
+                        style="-fx-background-color: #cccccc;" text="Cancelar">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
