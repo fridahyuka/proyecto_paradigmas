@@ -58,6 +58,13 @@ public abstract class PPTAPIClient {
         }
     }
 
+    protected String executeRequestUnsafely(HttpRequest request) throws Exception {
+        HttpResponse<String> response = client.send(request,
+                HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
+    }
+
     protected HttpRequest.Builder withCustomHeaders(
             HttpRequest.Builder builder,
             Map<String, String> headers) {

@@ -1,6 +1,6 @@
 package mx.uaemex.fi.API.responses;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -29,7 +29,7 @@ public class APIPlayResponse {
 
     @JsonProperty("created_at")
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private Date created_at;
+    private LocalDateTime created_at;
 
     public int getId() {
         return id;
@@ -71,11 +71,11 @@ public class APIPlayResponse {
         this.result = result;
     }
 
-    public Date getCreated_at() {
+    public LocalDateTime getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
 

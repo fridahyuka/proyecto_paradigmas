@@ -21,7 +21,7 @@ public class PPTAPIWhoamiClient extends PPTAPIClient {
                 .GET()
                 .build();
 
-        String responseBody = executeRequest(request);
+        String responseBody = executeRequestUnsafely(request);
         return objectMapper.readValue(responseBody, APIWhoamiResponse.class);
     }
 
