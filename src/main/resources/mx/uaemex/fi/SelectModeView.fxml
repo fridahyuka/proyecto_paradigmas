@@ -1,44 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.uaemex.fi.controller.RegistroController">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 
-    <center>
-        <VBox alignment="CENTER" spacing="15" BorderPane.alignment="CENTER">
-            <padding>
-                <Insets bottom="20" left="40" right="40" top="20" />
-            </padding>
-
-            <!-- TÍTULO -->
-            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;"
-                text="Selecciona el modo de juego" />
-
-
-            <!-- ONLINE -->
-            <Button onAction="#selectOnline" prefWidth="150" text="Modo Online">
-                <cursor>
-                    <Cursor fx:constant="HAND" />
-                </cursor>
-            </Button>
-            <!-- LOCAL -->
-            <Button onAction="#selectLocal" prefWidth="150" text="Modo Local">
-                <cursor>
-                    <Cursor fx:constant="HAND" />
-                </cursor>
-            </Button>
-
-
-        </VBox>
-    </center>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="42.0" layoutY="49.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Selecciona el modo de juego" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button layoutX="101.0" layoutY="143.0" onAction="#selectOnline" prefWidth="150" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;" text="Modo Online" textFill="#46cbf0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="100.0" layoutY="243.0" onAction="#selectLocal" prefWidth="150" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;" text="Modo Local" textFill="#46cbf0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="14.0" layoutX="29.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="293.0" />
+   </children>
+</AnchorPane>

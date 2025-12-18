@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -9,12 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.uaemex.fi.controller.MenuController">
+<AnchorPane prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.uaemex.fi.controller.MenuController">
    <children>
-      <Button layoutX="432.0" layoutY="138.0" mnemonicParsing="false" onAction="#onEditarClick" text="Editar Datos" />
-      <Pane layoutX="182.0" layoutY="51.0" prefHeight="200.0" prefWidth="200.0">
+      <Button layoutX="242.0" layoutY="237.0" mnemonicParsing="false" onAction="#onEditarClic" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" text="Editar Datos" textFill="WHITE" />
+      <Pane layoutX="67.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <GridPane fx:id="lblLogin" layoutX="-46.0" layoutY="54.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -26,15 +26,20 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label text="Usuario: " />
-                  <Label text="Correo: " GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.columnIndex="1" />
-                  <Label fx:id="lblCorreo" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Usuario: " textFill="WHITE" />
+                  <Label text="Correo: " textFill="WHITE" GridPane.rowIndex="2" />
+                  <Label text="Label" textFill="WHITE" GridPane.columnIndex="1" />
+                  <Label fx:id="lblCorreo" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
       </Pane>
-      <Button layoutX="431.0" layoutY="187.0" mnemonicParsing="false" onAction="#onRecordsClick" prefHeight="26.0" prefWidth="81.0" text="Records" />
-      <Button layoutX="432.0" layoutY="239.0" mnemonicParsing="false" onAction="#onJugarClick" prefHeight="26.0" prefWidth="81.0" text="Jugar" />
+      <Button layoutX="243.0" layoutY="287.0" mnemonicParsing="false" onAction="#onRecordsClic" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" text="Records" textFill="WHITE" />
+      <Button layoutX="243.0" layoutY="339.0" mnemonicParsing="false" onAction="#onJugarClic" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: null; -fx-border-color: #76e1ff; -fx-border-radius: 20;" text="Jugar" textFill="#76e1ff" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/trofeo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
