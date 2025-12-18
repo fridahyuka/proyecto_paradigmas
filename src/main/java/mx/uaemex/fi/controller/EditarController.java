@@ -138,6 +138,7 @@ public class EditarController extends AbstractController {
                     mc.setServicioJugadores(servicioJugadores);
                     mc.setServicioRecords(serviciorecords);
                     mc.setJugador(jugador);
+                    mc.setStage(stage);
                 });
     }
 
