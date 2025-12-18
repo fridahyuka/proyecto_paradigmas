@@ -1,24 +1,24 @@
 package mx.uaemex.fi.API;
 
-import mx.uaemex.fi.API.responses.APIRecordsResponse;
+import mx.uaemex.fi.API.responses.APIPlayerResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import java.util.List;
 import java.net.http.HttpRequest;
 
-public class PPTAPIRecordsClient extends PPTAPIClient {
+public class PPTAPIPlayersClient extends PPTAPIClient {
 
     private final ObjectMapper objectMapper;
 
-    public PPTAPIRecordsClient() {
+    public PPTAPIPlayersClient() {
         super();
         this.initializeHttpClient();
-        this.setBaseURL(super.getBaseURL() + "api/games/records/");
+        this.setBaseURL(super.getBaseURL() + "api/users/player/");
         this.objectMapper = new ObjectMapper();
         this.objectMapper.findAndRegisterModules();
     }
 
-    public List<APIRecordsResponse> getAllRecords() throws Exception {
+    public List<APIPlayerResponse> getAllPlayers() throws Exception {
         HttpRequest request = buildGetRequest("")
                 .GET()
                 .build();
@@ -26,20 +26,20 @@ public class PPTAPIRecordsClient extends PPTAPIClient {
         String responseBody = executeRequest(request);
 
         CollectionType listType = objectMapper.getTypeFactory()
-                .constructCollectionType(List.class, APIRecordsResponse.class);
+                .constructCollectionType(List.class, APIPlayerResponse.class);
         return objectMapper.readValue(responseBody, listType);
     }
 
-    public APIRecordsResponse getRecordById(int id) throws Exception {
+    public APIPlayerResponse getPlayerById(int id) throws Exception {
         HttpRequest request = buildGetRequest(id + "/")
                 .GET()
                 .build();
 
         String responseBody = executeRequest(request);
-        return objectMapper.readValue(responseBody, APIRecordsResponse.class);
+        return objectMapper.readValue(responseBody, APIPlayerResponse.class);
     }
 
-    public List<APIRecordsResponse> getRecordsByUsername(String username) throws Exception {
+    public List<APIPlayerResponse> getPlayersByUsername(String username) throws Exception {
         String encodedUsername = java.net.URLEncoder.encode(username, "UTF-8");
         String endpoint = "?search=" + encodedUsername;
 
@@ -50,36 +50,36 @@ public class PPTAPIRecordsClient extends PPTAPIClient {
         String responseBody = executeRequest(request);
 
         CollectionType listType = objectMapper.getTypeFactory()
-                .constructCollectionType(List.class, APIRecordsResponse.class);
+                .constructCollectionType(List.class, APIPlayerResponse.class);
         return objectMapper.readValue(responseBody, listType);
     }
 
     public static void main(String[] args) {
         try {
-            PPTAPIRecordsClient client = new PPTAPIRecordsClient();
+            PPTAPIPlayersClient client = new PPTAPIPlayersClient();
 
-            // Obtener todos los records
-            List<APIRecordsResponse> allRecords = client.getAllRecords();
-            System.out.println("Total records: " + allRecords.size());
+            // Obtener todos los jugadores
+            List<APIPlayerResponse> allRecords = client.getAllPlayers();
+            System.out.println("Total jugadores: " + allRecords.size());
 
-            for (APIRecordsResponse apiRecordsResponse : allRecords) {
+            for (APIPlayerResponse apiRecordsResponse : allRecords) {
 
                 System.out.println(apiRecordsResponse);
 
-            } // Obtener todos los records de gaelglz
-            List<APIRecordsResponse> gaelglzRecords = client.getRecordsByUsername("gaelglz");
-            System.out.println("Total records de gaelglz: " + gaelglzRecords.size());
+            } // Obtener todos los jugadores gaelglz
+            List<APIPlayerResponse> gaelglzRecords = client.getPlayersByUsername("gaelglz");
+            System.out.println("Total jugadores gaelglz: " + gaelglzRecords.size());
 
-            for (APIRecordsResponse apiRecordsResponse : gaelglzRecords) {
+            for (APIPlayerResponse apiRecordsResponse : gaelglzRecords) {
 
                 System.out.println(apiRecordsResponse);
 
             }
 
-            // AHora para el primer record
+            // AHora para el primer jugador
 
-            APIRecordsResponse first = client.getRecordById(1);
-            System.out.println("Primer record (id=1)");
+            APIPlayerResponse first = client.getPlayerById(1);
+            System.out.println("Primer jugador (id=1)");
             System.out.println(first);
 
         } catch (Exception e) {

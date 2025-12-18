@@ -1,5 +1,7 @@
 package mx.uaemex.fi.session;
 
+import mx.uaemex.fi.game.Movimiento;
+import mx.uaemex.fi.game.Resultado;
 import mx.uaemex.fi.model.data.Jugador;
 
 public class Partida {

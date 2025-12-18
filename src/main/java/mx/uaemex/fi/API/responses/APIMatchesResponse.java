@@ -1,17 +1,12 @@
 package mx.uaemex.fi.API.responses;
 
-import java.util.Date;
-
+import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 
-import mx.uaemex.fi.game.Movimiento;
-import mx.uaemex.fi.game.Resultado;
-import mx.uaemex.fi.model.data.Jugador;
-import mx.uaemex.fi.session.Partida;
+public class APIMatchesResponse {
 
-public class APIPlayResponse {
     @JsonProperty("id")
     private int id;
 
@@ -25,11 +20,11 @@ public class APIPlayResponse {
     private String machine_choice;
 
     @JsonProperty("result")
-    private String result;
+    private char result;
 
     @JsonProperty("created_at")
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private Date created_at;
+    private LocalDateTime created_at;
 
     public int getId() {
         return id;
@@ -63,36 +58,25 @@ public class APIPlayResponse {
         this.machine_choice = machine_choice;
     }
 
-    public String getResult() {
+    public char getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(char result) {
         this.result = result;
     }
 
-    public Date getCreated_at() {
+    public LocalDateTime getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
-    }
-
-    public Partida asPartida() {
-        Partida partida = new Partida();
-        Jugador jugador = new Jugador();
-        jugador.setId(player);
-        partida.setResultado(Resultado.fromSymbol(result.charAt(0)));
-        partida.setMovJugador(Movimiento.fromSymbol(player_choice));
-        partida.setMovOponente(Movimiento.fromSymbol(machine_choice));
-        partida.setJugador(jugador);
-        return partida;
     }
 
     @Override
     public String toString() {
-        return "APIPlayResponse [id=" + id + ", player=" + player + ", player_choice=" + player_choice
+        return "APIMatchesResponse [id=" + id + ", player=" + player + ", player_choice=" + player_choice
                 + ", machine_choice=" + machine_choice + ", result=" + result + ", created_at=" + created_at + "]";
     }
 
