@@ -10,74 +10,74 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="454.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="mx.uaemex.fi.controller.RecordsController">
+    xmlns="http://javafx.com/javafx/21"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="mx.uaemex.fi.controller.RecordsController">
 
     <children>
 
         <!-- TABLA DE RECORDS -->
         <TableView fx:id="tblRecords"
-                   layoutX="224.0"
-                   layoutY="195.0"
-                   prefHeight="200.0"
-                   prefWidth="200.0">
+            layoutX="224.0"
+            layoutY="195.0"
+            prefHeight="200.0"
+            prefWidth="200.0">
 
             <columns>
                 <TableColumn fx:id="colRecord"
-                             prefWidth="100.0"
-                             text="Record"/>
+                    prefWidth="100.0"
+                    text="Record" />
 
                 <TableColumn fx:id="colFecha"
-                             prefWidth="100.0"
-                             text="Fecha"/>
+                    prefWidth="100.0"
+                    text="Fecha" />
             </columns>
         </TableView>
 
         <!-- TÍTULO -->
         <Label layoutX="265.0" layoutY="153.0" text="Tus records: ">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
 
         <!-- MEJOR MARCA (pendiente) -->
         <Label layoutX="140.0" layoutY="100.0" text="¡Tu mejor marca! : ">
             <font>
-                <Font size="14.0"/>
+                <Font size="14.0" />
             </font>
         </Label>
 
         <TextField fx:id="txtMejorRecord"
-                   editable="false"
-                   layoutX="255.0"
-                   layoutY="97.0">
+            editable="false"
+            layoutX="255.0"
+            layoutY="97.0">
             <cursor>
-                <Cursor fx:constant="DISAPPEAR"/>
+                <Cursor fx:constant="DISAPPEAR" />
             </cursor>
         </TextField>
 
         <!-- BOTÓN MENÚ -->
         <Button layoutX="483.0"
-                layoutY="30.0"
-                mnemonicParsing="false"
-                onAction="#onMenuClic"
-                prefHeight="51.0"
-                prefWidth="94.0"
-                text="≡">
+            layoutY="30.0"
+            mnemonicParsing="false"
+            onAction="#onMenuClic"
+            prefHeight="51.0"
+            prefWidth="94.0"
+            text="≡">
             <font>
-                <Font size="24.0"/>
+                <Font size="24.0" />
             </font>
         </Button>
 
         <!-- BOTÓN JUGAR -->
         <Button layoutX="484.0"
-                layoutY="97.0"
-                mnemonicParsing="false"
-                onAction="#onJugarClic"
-                prefHeight="26.0"
-                prefWidth="94.0"
-                text="Jugar"/>
+            layoutY="97.0"
+            mnemonicParsing="false"
+            onAction="#onJugarClic"
+            prefHeight="26.0"
+            prefWidth="94.0"
+            text="Jugar" />
 
     </children>
 </AnchorPane>

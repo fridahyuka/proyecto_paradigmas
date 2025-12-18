@@ -36,7 +36,7 @@ public class Record extends ElementoConID implements Data {
 
     @Override
     public String toString() {
-        return "Record [jugador: " + jugador +  ", record: " + record + ", fecha: " + fecha + "]";
+        return "Record [jugador: " + jugador + ", record: " + record + ", fecha: " + fecha + "]";
     }
 
 }

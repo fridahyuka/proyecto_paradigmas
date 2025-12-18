@@ -3,7 +3,7 @@ package mx.uaemex.fi.model.data;
 public abstract class ElementoConID {
     protected int id;
 
-    public ElementoConID(){
+    public ElementoConID() {
 
     }
 

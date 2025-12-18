@@ -11,10 +11,12 @@ import java.util.ArrayList;
 
 public class LoginController extends AbstractController {
 
-    @FXML private TextField fldUser;
-    @FXML private PasswordField fldPassword;
-    @FXML private Label lblMessage;
-
+    @FXML
+    private TextField fldUser;
+    @FXML
+    private PasswordField fldPassword;
+    @FXML
+    private Label lblMessage;
 
     @FXML
     public void onEntrarClick() {
@@ -64,20 +66,16 @@ public class LoginController extends AbstractController {
 
         // Abrir ventana del juego
 
-
-
         NavigationHelper.goTo(stage,
                 "/mx/uaemex/fi/PartidaView.fxml",
                 "Partida",
-                controller->{
-                    PartidaController pc= (PartidaController) controller;
+                controller -> {
+                    PartidaController pc = (PartidaController) controller;
                     pc.setServicioJugadores(servicioJugadores);
                     pc.setServicioRecords(serviciorecords);
                     pc.setStage(stage);
                     pc.setJugador(j);
-                }
-        );
-
+                });
 
     }
 
@@ -92,8 +90,7 @@ public class LoginController extends AbstractController {
                     rc.setServicioJugadores(servicioJugadores);
                     rc.setServicioRecords(serviciorecords);
                     rc.setStage(stage);
-                }
-        );
+                });
     }
 
 }

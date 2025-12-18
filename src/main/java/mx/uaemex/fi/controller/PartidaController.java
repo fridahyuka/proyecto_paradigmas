@@ -15,27 +15,32 @@ import mx.uaemex.fi.util.NavigationHelper;
 import java.util.Date;
 import java.util.Objects;
 
-
 import java.util.Random;
 
-public class PartidaController extends AbstractController{
+public class PartidaController extends AbstractController {
 
-    @FXML private Label lblResultado;
-    @FXML private Label lblMensaje;
-    @FXML private Label lblOponente;
-    @FXML private Label lblJugador;
-    @FXML private Button btnIniciar;
-    @FXML private Label lblConteo;
+    @FXML
+    private Label lblResultado;
+    @FXML
+    private Label lblMensaje;
+    @FXML
+    private Label lblOponente;
+    @FXML
+    private Label lblJugador;
+    @FXML
+    private Button btnIniciar;
+    @FXML
+    private Label lblConteo;
 
-    @FXML private ImageView imgOponente;
-    @FXML private ImageView imgJugador;
+    @FXML
+    private ImageView imgOponente;
+    @FXML
+    private ImageView imgJugador;
 
     private final ReglasPPT reglas = new ReglasPPT();
     private final Random random = new Random();
     private boolean partidaIniciada = false;
     private int victorias;
-
-
 
     @FXML
     public void onIniciarClic() {
@@ -50,7 +55,6 @@ public class PartidaController extends AbstractController{
 
         System.out.println(this.jugador.getLogin());
     }
-
 
     @FXML
     public void onPiedraClick(MouseEvent e) {
@@ -78,24 +82,22 @@ public class PartidaController extends AbstractController{
     }
 
     @FXML
-    public void onMenuClic(){
+    public void onMenuClic() {
         NavigationHelper.goTo(stage,
                 "/mx/uaemex/fi/MenuView.fxml",
                 "Menú",
-                controller->{
-                    MenuController mc =(MenuController) controller;
-                            mc.setServicioJugadores(servicioJugadores);
-                            mc.setServicioRecords(serviciorecords);
-                            mc.setJugador(jugador);
-                            mc.setStage(stage);
-                }
-        );
+                controller -> {
+                    MenuController mc = (MenuController) controller;
+                    mc.setServicioJugadores(servicioJugadores);
+                    mc.setServicioRecords(serviciorecords);
+                    mc.setJugador(jugador);
+                    mc.setStage(stage);
+                });
     }
-
 
     private void jugar(Movimiento jugador) {
 
-        if(this.jugador==null){
+        if (this.jugador == null) {
             lblMensaje.setText("Jugador no encontrado...");
             return;
         }
@@ -107,26 +109,27 @@ public class PartidaController extends AbstractController{
         Movimiento oponente = Movimiento.values()[random.nextInt(Movimiento.values().length)];
         Resultado resultado = reglas.determinarGanador(jugador, oponente);
 
-        if(resultado==Resultado.GANASTE){
+        if (resultado == Resultado.GANASTE) {
             victorias++;
-        }else if(resultado==Resultado.PERDISTE){
-            //si pierde crea un record, lo guarda, y reinicia el conteo. Si pierde en el primer jugada no crea el record
+        } else if (resultado == Resultado.PERDISTE) {
+            // si pierde crea un record, lo guarda, y reinicia el conteo. Si pierde en el
+            // primer jugada no crea el record
 
-            if(victorias==0){
+            if (victorias == 0) {
                 return;
             }
 
-            Record record=new Record();
+            Record record = new Record();
             record.setJugador(this.jugador);
             record.setRecord(victorias);
             record.setFecha(new Date());
 
             serviciorecords.insertar(record);
 
-            victorias=0;
+            victorias = 0;
         }
 
-        lblConteo.setText(""+victorias);
+        lblConteo.setText("" + victorias);
         mostrarMovimiento(imgJugador, jugador);
         mostrarMovimiento(imgOponente, oponente);
 
@@ -139,7 +142,6 @@ public class PartidaController extends AbstractController{
         lblResultado.setText(resultado.toString());
         lblResultado.setVisible(true);
 
-
         btnIniciar.setText("Volver a jugar");
         btnIniciar.setVisible(true);
         partidaIniciada = false;
@@ -149,11 +151,8 @@ public class PartidaController extends AbstractController{
         img.setImage(new Image(
                 Objects.requireNonNull(
                         getClass().getResourceAsStream(
-                                "/mx/uaemex/fi/images/" + m.name().toLowerCase() + ".png"
-                        ),
-                        "No se encontró la imagen de " + m
-                )
-        ));
+                                "/mx/uaemex/fi/images/" + m.name().toLowerCase() + ".png"),
+                        "No se encontró la imagen de " + m)));
     }
 
 }

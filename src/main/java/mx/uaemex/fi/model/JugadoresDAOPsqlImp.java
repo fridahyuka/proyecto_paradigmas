@@ -5,20 +5,22 @@ import mx.uaemex.fi.model.data.Jugador;
 import java.sql.*;
 import java.util.ArrayList;
 
-
 /**
  * Implementaci&oacute;n del DAO de jugadores utilizando una base de datos
  * relacional.
  */
-public class JugadoresDAOPsqlImp extends AbstractSqlDAO implements JugadoresDAO{
+public class JugadoresDAOPsqlImp extends AbstractSqlDAO implements JugadoresDAO {
     /**
-     * <p>M&eacute;todo para insertar un jugador en la base de datos.
-     * No pueden repetirse ni el nombre de usuario (login) ni
-     * el correo.</p>
      * <p>
-     *  Los campos login, password y correo son obligatorios,
-     *  mientras que el id ser&aacute; generado por la base.
+     * M&eacute;todo para insertar un jugador en la base de datos.
+     * No pueden repetirse ni el nombre de usuario (login) ni
+     * el correo.
      * </p>
+     * <p>
+     * Los campos login, password y correo son obligatorios,
+     * mientras que el id ser&aacute; generado por la base.
+     * </p>
+     * 
      * @param jugador Objetos con la informaci&pacute;n de creaci&oacute;n
      * @return Jugador inseertado.
      */
@@ -60,22 +62,24 @@ public class JugadoresDAOPsqlImp extends AbstractSqlDAO implements JugadoresDAO{
         }
     }
 
-
     /**
-     * <p>M&eacute;todo para consultar jugadores utilizando
+     * <p>
+     * M&eacute;todo para consultar jugadores utilizando
      * la estrategia de QBE (Query By Example) en la que
      * la b&uacute;squeda se realiza utilizando el par&aacute;metro
-     * como ejemplo de lo que se debe buscar.</p>
-     * <p>
-     *     <b>Nota:</b> Si el Jugador pasado como p&aacute;rametro no
-     *     tiene ning&uacute;n atributo establecido el m&eacute;todo
-     *     se comporta como "consultar todos".
+     * como ejemplo de lo que se debe buscar.
      * </p>
+     * <p>
+     * <b>Nota:</b> Si el Jugador pasado como p&aacute;rametro no
+     * tiene ning&uacute;n atributo establecido el m&eacute;todo
+     * se comporta como "consultar todos".
+     * </p>
+     * 
      * @param jugador Objeto que se&ntilde;ala los criterios y
      *                valores de b&uacute;squeda.
      * @return Colecci&oacute;n de Jugadores que cumplen con los
-     * criterios de b&uacute;squeda. En caso de no encontrar ninguno
-     * devolver&aacute; una lista vac&iacute;a.
+     *         criterios de b&uacute;squeda. En caso de no encontrar ninguno
+     *         devolver&aacute; una lista vac&iacute;a.
      * @throws RuntimeException en caso de error.
      */
     @Override
@@ -146,8 +150,7 @@ public class JugadoresDAOPsqlImp extends AbstractSqlDAO implements JugadoresDAO{
                 // activo es VARCHAR 'true' / 'false'
                 j.setActivo(
                         rs.getString("activo")
-                                .equalsIgnoreCase("true")
-                );
+                                .equalsIgnoreCase("true"));
 
                 lista.add(j);
             }
@@ -159,10 +162,9 @@ public class JugadoresDAOPsqlImp extends AbstractSqlDAO implements JugadoresDAO{
         return lista;
     }
 
-
-
     /**
      * Consultar todos los jugadores activos.
+     * 
      * @return Colecci&oacute;n de jugadores (activos y no activos)
      */
     @Override
@@ -176,9 +178,9 @@ public class JugadoresDAOPsqlImp extends AbstractSqlDAO implements JugadoresDAO{
             stmt = this.conexion.createStatement();
             resultado = stmt.executeQuery(sql);
             ArrayList<Jugador> jugadores = new ArrayList<>();
-            while (resultado.next()){
+            while (resultado.next()) {
                 Jugador j = new Jugador();
-                j.setId(resultado.getInt(1)); //La primera columna es el Id
+                j.setId(resultado.getInt(1)); // La primera columna es el Id
                 j.setLogin(resultado.getString("login"));
                 j.setCorreo(resultado.getString("correo"));
                 j.setPassword(resultado.getString("password"));
@@ -192,12 +194,17 @@ public class JugadoresDAOPsqlImp extends AbstractSqlDAO implements JugadoresDAO{
     }
 
     /**
-     * <p>Utilizaremos el nombre de usuario (login) como
+     * <p>
+     * Utilizaremos el nombre de usuario (login) como
      * identificador de los registros, lo que implica que
      * puede cambiar el correo o el password o bien recativar
-     * a un usuario.</p>
-     * <p><b>Nota:</b> no se puede desactivar un jugador porque eso
-     * implica eliminarlo</p>
+     * a un usuario.
+     * </p>
+     * <p>
+     * <b>Nota:</b> no se puede desactivar un jugador porque eso
+     * implica eliminarlo
+     * </p>
+     * 
      * @param jugador Objeto con la informaci&oacute;n
      *                para la actualizaci&oacute;n.
      */
@@ -262,6 +269,7 @@ public class JugadoresDAOPsqlImp extends AbstractSqlDAO implements JugadoresDAO{
     /**
      * Eliminaci&oacute;n de un jugador. La eliminaci&oacute;n es l&oacute;gica
      * y no f&iacute;sica.
+     * 
      * @param jugador a eliminar
      */
     @Override
@@ -288,6 +296,6 @@ public class JugadoresDAOPsqlImp extends AbstractSqlDAO implements JugadoresDAO{
 
     @Override
     public void setConexion(Connection conexion) {
-        this.conexion=conexion;
+        this.conexion = conexion;
     }
 }

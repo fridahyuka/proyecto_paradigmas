@@ -5,7 +5,7 @@ import mx.uaemex.fi.model.data.Jugador;
 
 import java.util.ArrayList;
 
-public class JugadoresServicesLocal implements JugadoresService{
+public class JugadoresServicesLocal implements JugadoresService {
     private JugadoresDAO dao;
 
     public JugadoresServicesLocal() {

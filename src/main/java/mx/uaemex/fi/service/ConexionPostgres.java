@@ -49,4 +49,3 @@ public class ConexionPostgres {
         return servicioRecords;
     }
 }
-

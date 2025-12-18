@@ -70,7 +70,8 @@ public class RecordsController extends AbstractController {
     }
 
     /**
-     * Método auxiliar para cargar records solo cuando ambos componentes estén listos
+     * Método auxiliar para cargar records solo cuando ambos componentes estén
+     * listos
      */
     private void cargarRecordsSiListo() {
         // Solo cargar si ambos están inicializados
@@ -91,24 +92,25 @@ public class RecordsController extends AbstractController {
                     mc.setServicioRecords(serviciorecords);
                     mc.setJugador(jugador);
                     mc.setStage(stage);
-                }
-        );
+                });
     }
 
-    @FXML public void onJugarClic(){
+    @FXML
+    public void onJugarClic() {
         NavigationHelper.goTo(stage,
                 "/mx/uaemex/fi/PartidaView.fxml",
                 "Partida",
-                controller->{
-                    PartidaController pc= (PartidaController) controller;
+                controller -> {
+                    PartidaController pc = (PartidaController) controller;
                     pc.setServicioJugadores(servicioJugadores);
                     pc.setServicioRecords(serviciorecords);
                     pc.setStage(stage);
                     pc.setJugador(this.jugador);
-                }
-        );
+                });
     }
-    @FXML public void onEditarClic(){
+
+    @FXML
+    public void onEditarClic() {
 
     }
 

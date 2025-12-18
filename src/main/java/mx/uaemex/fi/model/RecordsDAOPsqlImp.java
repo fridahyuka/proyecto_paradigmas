@@ -19,7 +19,6 @@ public class RecordsDAOPsqlImp extends AbstractSqlDAO implements RecordsDAO {
             ps.setInt(2, record.getRecord());
             ps.setTimestamp(3, new Timestamp(record.getFecha().getTime()));
 
-
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -73,7 +72,6 @@ public class RecordsDAOPsqlImp extends AbstractSqlDAO implements RecordsDAO {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public void borrar(Record record) {

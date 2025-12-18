@@ -8,14 +8,18 @@ import javafx.scene.control.TextField;
 import mx.uaemex.fi.model.data.Jugador;
 import mx.uaemex.fi.util.NavigationHelper;
 
-public class RegistroController extends AbstractController{
+public class RegistroController extends AbstractController {
 
-    @FXML private TextField fldLogin;
-    @FXML private PasswordField fldPassword;
-    @FXML private TextField fldCorreo;
-    @FXML private PasswordField fldConfirmarP;
-    @FXML private Label lblError;
-
+    @FXML
+    private TextField fldLogin;
+    @FXML
+    private PasswordField fldPassword;
+    @FXML
+    private TextField fldCorreo;
+    @FXML
+    private PasswordField fldConfirmarP;
+    @FXML
+    private Label lblError;
 
     @FXML
     public void onRegistrarClic() {
@@ -24,22 +28,22 @@ public class RegistroController extends AbstractController{
 
         String login = fldLogin.getText();
         String password = fldPassword.getText();
-        String confirmacion= fldConfirmarP.getText();
+        String confirmacion = fldConfirmarP.getText();
         String correo = fldCorreo.getText();
 
-        //Validar entradas
+        // Validar entradas
         if (login == null || login.isBlank()
                 || password == null || password.isBlank()
                 || correo == null || correo.isBlank()
-                || confirmacion==null || confirmacion.isBlank() ) {
+                || confirmacion == null || confirmacion.isBlank()) {
 
             mostrarError("Llena todos los campos");
             return;
         }
-        if(login.length()>15){
+        if (login.length() > 15) {
             mostrarError("Usuario demasiado largo, maximo 15 caracteres");
         }
-        if(!password.equals(confirmacion)){
+        if (!password.equals(confirmacion)) {
             mostrarError("Las contraseñas no coinciden");
             return;
         }
@@ -57,7 +61,6 @@ public class RegistroController extends AbstractController{
             return;
         }
 
-
         Jugador nuevo = new Jugador();
         nuevo.setLogin(login);
         nuevo.setPassword(password);
@@ -66,27 +69,24 @@ public class RegistroController extends AbstractController{
 
         servicioJugadores.registrarJugador(nuevo);
 
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Registro exitoso");
         alert.setHeaderText(null);
         alert.setContentText("Jugador guardado correctamente");
         alert.showAndWait();
 
-
         // Abrir ventana del juego
 
         NavigationHelper.goTo(stage,
                 "/mx/uaemex/fi/PartidaView.fxml",
                 "Partida",
-                controller->{
-                    PartidaController pc= (PartidaController) controller;
+                controller -> {
+                    PartidaController pc = (PartidaController) controller;
                     pc.setServicioJugadores(servicioJugadores);
                     pc.setServicioRecords(serviciorecords);
                     pc.setStage(stage);
                     pc.setJugador(nuevo);
-                }
-        );
+                });
     }
 
     @FXML
@@ -100,10 +100,8 @@ public class RegistroController extends AbstractController{
                     lc.setServicioJugadores(servicioJugadores);
                     lc.setServicioRecords(serviciorecords);
                     lc.setStage(stage);
-                }
-        );
+                });
     }
-
 
     private void mostrarError(String mensaje) {
         lblError.setText(mensaje);

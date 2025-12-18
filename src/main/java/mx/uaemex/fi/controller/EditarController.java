@@ -10,12 +10,18 @@ import mx.uaemex.fi.util.NavigationHelper;
 
 public class EditarController extends AbstractController {
 
-    @FXML private TextField fldLogin;
-    @FXML private TextField fldCorreo;
-    @FXML private PasswordField fldPasswordActual;
-    @FXML private PasswordField fldNuevaPassword;
-    @FXML private PasswordField fldConfirmarPassword;
-    @FXML private Label lblError;
+    @FXML
+    private TextField fldLogin;
+    @FXML
+    private TextField fldCorreo;
+    @FXML
+    private PasswordField fldPasswordActual;
+    @FXML
+    private PasswordField fldNuevaPassword;
+    @FXML
+    private PasswordField fldConfirmarPassword;
+    @FXML
+    private Label lblError;
 
     @FXML
     public void initialize() {
@@ -132,8 +138,7 @@ public class EditarController extends AbstractController {
                     mc.setServicioJugadores(servicioJugadores);
                     mc.setServicioRecords(serviciorecords);
                     mc.setJugador(jugador);
-                }
-        );
+                });
     }
 
     private void mostrarError(String mensaje) {

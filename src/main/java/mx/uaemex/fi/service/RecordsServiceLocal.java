@@ -12,7 +12,6 @@ public class RecordsServiceLocal implements RecordsService {
     public RecordsServiceLocal() {
     }
 
-
     public void setDao(RecordsDAO dao) {
         this.dao = dao;
     }

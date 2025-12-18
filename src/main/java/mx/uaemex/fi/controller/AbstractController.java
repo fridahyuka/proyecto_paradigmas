@@ -11,7 +11,6 @@ public abstract class AbstractController {
     protected Stage stage;
     protected Jugador jugador;
 
-
     public Stage getStage() {
         return stage;
     }

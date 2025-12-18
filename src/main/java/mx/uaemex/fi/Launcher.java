@@ -20,7 +20,7 @@ public class Launcher extends Application {
         // Conectar a PostgreSQL e inicializar servicios
         ConexionPostgres.conectar();
         servicioJugadores = ConexionPostgres.getServicioJugadores();
-        servicioRecords   = ConexionPostgres.getServicioRecords();
+        servicioRecords = ConexionPostgres.getServicioRecords();
 
         NavigationHelper.goTo(
                 stage,
@@ -31,8 +31,7 @@ public class Launcher extends Application {
                     lc.setStage(stage);
                     lc.setServicioJugadores(servicioJugadores);
                     lc.setServicioRecords(servicioRecords);
-                }
-        );
+                });
 
         stage.show();
     }
