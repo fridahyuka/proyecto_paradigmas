@@ -28,6 +28,9 @@ sudo -u postgres psql -d pptls -f schema.sql
 
 ```
 
+## Diagrama de Gantt
+![Diagrama de Gantt](docs/uml/Diagrama%20de%20Gantt.png)
+
 # Diagramas UML
 
 ### Diagrama de caso de uso
