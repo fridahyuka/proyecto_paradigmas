@@ -18,7 +18,7 @@ public class PPTAPIMatchesClient extends PPTAPIClient {
         this.objectMapper.findAndRegisterModules();
     }
 
-    public List<APIMatchesResponse> getAllPlayers() throws Exception {
+    public List<APIMatchesResponse> getAllMatches() throws Exception {
         HttpRequest request = buildGetRequest("")
                 .GET()
                 .build();
@@ -30,7 +30,7 @@ public class PPTAPIMatchesClient extends PPTAPIClient {
         return objectMapper.readValue(responseBody, listType);
     }
 
-    public APIMatchesResponse getPlayerById(int id) throws Exception {
+    public APIMatchesResponse getMatchById(int id) throws Exception {
         HttpRequest request = buildGetRequest(id + "/")
                 .GET()
                 .build();
@@ -39,7 +39,7 @@ public class PPTAPIMatchesClient extends PPTAPIClient {
         return objectMapper.readValue(responseBody, APIMatchesResponse.class);
     }
 
-    public List<APIMatchesResponse> getPlayersByUsername(String username) throws Exception {
+    public List<APIMatchesResponse> getMatchesByUsername(String username) throws Exception {
         String encodedUsername = java.net.URLEncoder.encode(username, "UTF-8");
         String endpoint = "?search=" + encodedUsername;
 
@@ -59,7 +59,7 @@ public class PPTAPIMatchesClient extends PPTAPIClient {
             PPTAPIMatchesClient client = new PPTAPIMatchesClient();
 
             // Obtener todas las partidas
-            List<APIMatchesResponse> allRecords = client.getAllPlayers();
+            List<APIMatchesResponse> allRecords = client.getAllMatches();
             System.out.println("Total partidas: " + allRecords.size());
 
             for (APIMatchesResponse apiRecordsResponse : allRecords) {
@@ -67,7 +67,7 @@ public class PPTAPIMatchesClient extends PPTAPIClient {
                 System.out.println(apiRecordsResponse);
 
             } // Obtener todas las partidas de gaelglz
-            List<APIMatchesResponse> gaelglzRecords = client.getPlayersByUsername("gaelglz");
+            List<APIMatchesResponse> gaelglzRecords = client.getMatchesByUsername("gaelglz");
             System.out.println("Total partidas de gaelglz: " + gaelglzRecords.size());
 
             for (APIMatchesResponse apiRecordsResponse : gaelglzRecords) {
@@ -78,7 +78,7 @@ public class PPTAPIMatchesClient extends PPTAPIClient {
 
             // AHora para la primer partida
 
-            APIMatchesResponse first = client.getPlayerById(1);
+            APIMatchesResponse first = client.getMatchById(1);
             System.out.println("Primer partida (id=1)");
             System.out.println(first);
 

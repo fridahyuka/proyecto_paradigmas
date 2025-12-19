@@ -39,7 +39,10 @@ public class JugadoresServicesOnline implements JugadoresService {
     public List<Jugador> consultarUsuario(Jugador j) {
         System.out.println("Consulta del jugador filtro " + j.toString());
         List<Jugador> players = new ArrayList<>();
+
         if (j.getId() > 0) {
+
+            System.out.println("Realizando consulta por id");
             try {
                 players.add(
                         client.getPlayerById(j.getId())
@@ -49,8 +52,8 @@ public class JugadoresServicesOnline implements JugadoresService {
             }
         }
 
-        if (j.getLogin() != null) {
-
+        else if (j.getLogin() != null) {
+            System.out.println("Realizando consulta por nombre de usuario");
             try {
 
                 List<APIPlayerResponse> response = client.getPlayersByUsername(j.getLogin());
@@ -64,6 +67,10 @@ public class JugadoresServicesOnline implements JugadoresService {
             }
         }
 
+        for (Jugador jugador : players) {
+            System.out.println(jugador.toString());
+
+        }
         return players;
     }
 

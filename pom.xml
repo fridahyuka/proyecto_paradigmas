@@ -6,7 +6,7 @@
 
     <groupId>mx.uamex.fi.paradigmas</groupId>
     <artifactId>proyecto_paradigmas</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -79,6 +79,31 @@
                         <configuration>
                             <mainClass>mx.uaemex.fi.Launcher</mainClass>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>mx.uaemex.fi.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
