@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import mx.uaemex.fi.model.data.Jugador;
 import mx.uaemex.fi.util.NavigationHelper;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class LoginController extends AbstractController {
@@ -46,7 +46,7 @@ public class LoginController extends AbstractController {
         Jugador filtro = new Jugador();
         filtro.setLogin(usuario);
 
-        ArrayList<Jugador> encontrados = servicioJugadores.consultarUsuario(filtro);
+        List<Jugador> encontrados = servicioJugadores.consultarUsuario(filtro);
 
         if (encontrados.isEmpty()) {
             lblMessage.setText("Usuario no encontrado");
@@ -55,8 +55,7 @@ public class LoginController extends AbstractController {
 
         Jugador j = encontrados.get(0);
 
-        // Verificar contraseña PRIMERO
-        if (!j.getPassword().equals(contrasena)) {
+        if (!servicioJugadores.login(j, contrasena)) {
             lblMessage.setText("Contraseña incorrecta");
             return;
         }
@@ -91,8 +90,7 @@ public class LoginController extends AbstractController {
                     pc.setServicioRecords(serviciorecords);
                     pc.setJugador(j);
                     pc.setStage(stage);
-                }
-        );
+                });
     }
 
     @FXML
@@ -106,7 +104,6 @@ public class LoginController extends AbstractController {
                     rc.setServicioJugadores(servicioJugadores);
                     rc.setServicioRecords(serviciorecords);
                     rc.setStage(stage);
-                }
-        );
+                });
     }
 }

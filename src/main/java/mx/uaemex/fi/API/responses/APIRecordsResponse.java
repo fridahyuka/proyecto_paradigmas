@@ -3,7 +3,13 @@ package mx.uaemex.fi.API.responses;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+
+import mx.uaemex.fi.model.data.Jugador;
+import mx.uaemex.fi.model.data.Record;
+
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class APIRecordsResponse {
     @JsonProperty("id")
@@ -72,6 +78,25 @@ public class APIRecordsResponse {
 
     public void setIs_current_record(boolean is_current_record) {
         this.is_current_record = is_current_record;
+    }
+
+    public Record asRecord() {
+
+        Record record = new Record();
+        Jugador jugador = new Jugador();
+
+        jugador.setActivo(true);
+        jugador.setId(player);
+
+        record.setFecha(Date.from(
+                updated_at.atZone(
+                        ZoneId.systemDefault())
+                        .toInstant()));
+
+        record.setId(id);
+        record.setRecord(this.record);
+        record.setJugador(jugador);
+        return record;
     }
 
     @Override

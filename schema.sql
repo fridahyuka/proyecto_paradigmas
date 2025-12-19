@@ -11,7 +11,6 @@ CREATE TABLE jugadores (
 CREATE TABLE records (
     id SERIAL PRIMARY KEY,                    -- ID autoincremental
     jugador_id INTEGER NOT NULL,             -- ID del jugador
-    juego_id INTEGER NOT NULL,               -- ID del juego
     record INTEGER NOT NULL,                 -- Puntuación/récord
     fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     

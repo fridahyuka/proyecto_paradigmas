@@ -1,10 +1,10 @@
-package mx.uaemex.fi.service;
+package mx.uaemex.fi.service.local;
 
 import mx.uaemex.fi.model.RecordsDAO;
 import mx.uaemex.fi.model.data.Jugador;
 import mx.uaemex.fi.model.data.Record;
+import mx.uaemex.fi.service.RecordsService;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RecordsServiceLocal implements RecordsService {

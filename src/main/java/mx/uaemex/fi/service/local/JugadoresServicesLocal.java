@@ -1,7 +1,8 @@
-package mx.uaemex.fi.service;
+package mx.uaemex.fi.service.local;
 
 import mx.uaemex.fi.model.JugadoresDAO;
 import mx.uaemex.fi.model.data.Jugador;
+import mx.uaemex.fi.service.JugadoresService;
 
 import java.util.ArrayList;
 
@@ -41,4 +42,10 @@ public class JugadoresServicesLocal implements JugadoresService {
         this.dao.actualizar(j);
         return j;
     }
+
+    public boolean login(Jugador j, String password) {
+        return password.equals(j.getPassword());
+
+    }
+
 }

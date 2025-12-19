@@ -3,9 +3,9 @@ package mx.uaemex.fi;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import mx.uaemex.fi.controller.LoginController;
-import mx.uaemex.fi.service.ConexionPostgres;
 import mx.uaemex.fi.service.JugadoresService;
 import mx.uaemex.fi.service.RecordsService;
+import mx.uaemex.fi.service.local.ConexionPostgres;
 import mx.uaemex.fi.util.NavigationHelper;
 
 public class Launcher extends Application {

@@ -1,7 +1,9 @@
-package mx.uaemex.fi.service;
+package mx.uaemex.fi.service.local;
 
 import mx.uaemex.fi.model.JugadoresDAOPsqlImp;
 import mx.uaemex.fi.model.RecordsDAOPsqlImp;
+import mx.uaemex.fi.service.JugadoresService;
+import mx.uaemex.fi.service.RecordsService;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
