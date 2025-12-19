@@ -19,7 +19,7 @@
 
         <!-- USUARIO -->
         <Label layoutX="25.0" layoutY="86.0"
-            text="Usuario: (Elige bien porque no lo podras editar)" textFill="#46CBF0" />
+            text="Usuario:" textFill="#46CBF0" />
 
         <TextField fx:id="fldLogin" layoutX="25.0" layoutY="103.0" prefWidth="250"
             promptText="Ingresa tu nombre de usuario"
