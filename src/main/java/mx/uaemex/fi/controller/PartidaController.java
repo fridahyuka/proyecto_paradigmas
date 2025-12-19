@@ -83,6 +83,10 @@ public class PartidaController extends AbstractController {
 
     @FXML
     public void onMenuClick() {
+        if(this.jugador==null){
+            System.out.println("jugador nulo");
+            return;
+        }
         NavigationHelper.goTo(stage,
                 "/mx/uaemex/fi/MenuView.fxml",
                 "Menú",

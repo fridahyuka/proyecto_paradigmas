@@ -5,78 +5,92 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import mx.uaemex.fi.model.data.Jugador;
 import mx.uaemex.fi.util.NavigationHelper;
+
+import java.util.function.UnaryOperator;
 
 public class EditarController extends AbstractController {
 
     @FXML
-    private TextField fldLogin;
+    private Label lblLogin;
+
     @FXML
     private TextField fldCorreo;
+
     @FXML
     private PasswordField fldPasswordActual;
+
     @FXML
     private PasswordField fldNuevaPassword;
+
     @FXML
     private PasswordField fldConfirmarPassword;
+
     @FXML
     private Label lblError;
 
+
+    @FXML
+    public void initialize() {
+        limitarCaracteresSinEspacios(fldCorreo, 30);           // VARCHAR(30)
+        limitarCaracteresSinEspacios(fldPasswordActual, 64);  // VARCHAR(64)
+        limitarCaracteresSinEspacios(fldNuevaPassword, 64);   // VARCHAR(64)
+        limitarCaracteresSinEspacios(fldConfirmarPassword, 64);
+    }
+
     private void cargarDatosJugador() {
-        fldLogin.setText(jugador.getLogin());
+        lblLogin.setText(jugador.getLogin());
         fldCorreo.setText(jugador.getCorreo());
     }
 
+
     @FXML
     public void onGuardarClick() {
+
         lblError.setText("");
 
-        String login = fldLogin.getText();
-        String correo = fldCorreo.getText();
+        String login = lblLogin.getText();
+        String correo = fldCorreo.getText().trim();
         String passwordActual = fldPasswordActual.getText();
         String nuevaPassword = fldNuevaPassword.getText();
         String confirmarPassword = fldConfirmarPassword.getText();
 
-        // Validar campos obligatorios
-        if (login == null || login.isBlank() || correo == null || correo.isBlank()) {
-            mostrarError("Usuario y correo son obligatorios");
+
+
+        if (correo.isEmpty()) {
+            mostrarError("El correo es obligatorio");
             return;
         }
 
-        // Validar longitud del login
-        if (login.length() > 15) {
-            mostrarError("Usuario demasiado largo, máximo 15 caracteres");
+        if (correo.contains(" ")) {
+            mostrarError("El correo no puede contener espacios");
             return;
         }
 
-        // Verificar si el usuario ya existe (excepto si es el mismo)
-        if (!login.equals(jugador.getLogin())) {
-            Jugador filtro = new Jugador();
-            filtro.setLogin(login);
-            if (!servicioJugadores.consultarUsuario(filtro).isEmpty()) {
-                mostrarError("El usuario no está disponible");
-                return;
-            }
-        }
-
-
-        boolean quiereCambiarPassword = !nuevaPassword.isBlank() || !confirmarPassword.isBlank();
+        boolean quiereCambiarPassword =
+                !nuevaPassword.isBlank() || !confirmarPassword.isBlank();
 
         if (quiereCambiarPassword) {
-            // Verificar que se haya ingresado la contraseña actual
+
             if (passwordActual.isBlank()) {
-                mostrarError("Debes ingresar tu contraseña actual para cambiarla");
+                mostrarError("Debes ingresar tu contraseña actual");
                 return;
             }
 
-            // Verificar que la contraseña actual sea correcta
+            if (passwordActual.contains(" ")
+                    || nuevaPassword.contains(" ")
+                    || confirmarPassword.contains(" ")) {
+                mostrarError("Las contraseñas no pueden contener espacios");
+                return;
+            }
+
             if (!passwordActual.equals(jugador.getPassword())) {
                 mostrarError("La contraseña actual es incorrecta");
                 return;
             }
 
-            // Validar nueva contraseña
             if (!nuevaPassword.equals(confirmarPassword)) {
                 mostrarError("Las nuevas contraseñas no coinciden");
                 return;
@@ -89,37 +103,34 @@ public class EditarController extends AbstractController {
         }
 
         try {
-            // Actualizar datos del jugador
             jugador.setLogin(login);
             jugador.setCorreo(correo);
 
-            // Actualizar contraseña si se proporcionó una nueva
             if (quiereCambiarPassword && !nuevaPassword.isBlank()) {
                 jugador.setPassword(nuevaPassword);
             }
 
-            // Guardar cambios
             servicioJugadores.actualizarJugador(jugador);
 
-            // Mostrar mensaje de éxito
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Actualización exitosa");
             alert.setHeaderText(null);
             alert.setContentText("Perfil actualizado correctamente");
             alert.showAndWait();
 
-            // Regresar al menú
             regresarAlMenu();
 
         } catch (Exception e) {
-            mostrarError("Error al actualizar el perfil: " + e.getMessage());
+            mostrarError("Error al actualizar el perfil");
         }
     }
+
 
     @FXML
     public void onCancelarClick() {
         regresarAlMenu();
     }
+
 
     private void regresarAlMenu() {
         NavigationHelper.goTo(
@@ -132,21 +143,39 @@ public class EditarController extends AbstractController {
                     mc.setServicioRecords(serviciorecords);
                     mc.setJugador(jugador);
                     mc.setStage(stage);
-                });
+                }
+        );
     }
 
     private void mostrarError(String mensaje) {
         lblError.setText(mensaje);
         lblError.setStyle("-fx-text-fill: red;");
     }
+
+    private void limitarCaracteresSinEspacios(TextField campo, int max) {
+        UnaryOperator<TextFormatter.Change> filtro = change -> {
+
+            String nuevoTexto = change.getControlNewText();
+
+            if (nuevoTexto.contains(" ")) {
+                return null;
+            }
+
+            if (nuevoTexto.length() > max) {
+                return null;
+            }
+
+            return change;
+        };
+
+        campo.setTextFormatter(new TextFormatter<>(filtro));
+    }
+
     @Override
     public void setJugador(Jugador jugador) {
         this.jugador = jugador;
-
         if (jugador != null) {
             cargarDatosJugador();
         }
     }
-
-
 }

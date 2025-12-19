@@ -43,7 +43,23 @@ public class RecordsController extends AbstractController {
 
         listaRecords = FXCollections.observableArrayList();
         tblRecords.setItems(listaRecords);
+
+
         colRecord.setCellValueFactory(new PropertyValueFactory<>("record"));
+        colRecord.setCellFactory(col -> new TableCell<Record, Integer>() {
+            @Override
+            protected void updateItem(Integer valor, boolean empty) {
+                super.updateItem(valor, empty);
+                if (empty || valor == null) {
+                    setText(null);
+                } else {
+                    setText(valor.toString());
+                    setStyle("-fx-alignment: CENTER;");
+                }
+            }
+        });
+
+
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colFecha.setCellFactory(col -> new TableCell<Record, Date>() {
             @Override
@@ -58,6 +74,7 @@ public class RecordsController extends AbstractController {
                             .toLocalDate();
 
                     setText(localDate.format(FORMATO_FECHA));
+                    setStyle("-fx-alignment: CENTER;");
                 }
             }
         });
@@ -70,33 +87,38 @@ public class RecordsController extends AbstractController {
         }
 
         try {
-
             List<Record> records = serviciorecords.consultar(jugador);
             listaRecords.setAll(records);
 
-
+            if (records.isEmpty()) {
+                lblMejorRecord.setText("Juega primero para crear tu primer récord 🎮");
+                return;
+            }
 
             Record max = serviciorecords.consultarMax(jugador);
 
             if (max != null && max.getFecha() != null) {
 
-                LocalDate fecha = ((java.sql.Date) max.getFecha()).toLocalDate();
+                LocalDate fecha =
+                        ((java.sql.Date) max.getFecha()).toLocalDate();
 
                 lblMejorRecord.setText(
                         "Tu mejor marca: " +
-                                max.getRecord() + " victorias, fecha " +
+                                max.getRecord() +
+                                " victorias, fecha " +
                                 fecha.format(FORMATO_FECHA)
                 );
 
             } else {
-                lblMejorRecord.setText("Tu mejor marca: -");
+                lblMejorRecord.setText("Juega primero para crear tu primer récord 🎮");
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
+            lblMejorRecord.setText("Error al cargar récords");
         }
     }
+
 
     @Override
     public void setJugador(Jugador jugador) {

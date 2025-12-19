@@ -1,6 +1,8 @@
 package mx.uaemex.fi.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -8,27 +10,28 @@ import mx.uaemex.fi.model.data.Jugador;
 import mx.uaemex.fi.util.NavigationHelper;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class LoginController extends AbstractController {
 
     @FXML
     private TextField fldUser;
+
     @FXML
     private PasswordField fldPassword;
+
     @FXML
     private Label lblMessage;
 
     @FXML
     public void onEntrarClick() {
 
-        if (servicioJugadores == null) {
-            lblMessage.setText("Servicio no inicializado");
-            return;
-        }
+        lblMessage.setText("");
 
         String usuario = fldUser.getText();
         String contrasena = fldPassword.getText();
 
+        // Validaciones básicas
         if (usuario == null || usuario.isBlank()) {
             lblMessage.setText("Ingresa un usuario");
             return;
@@ -39,6 +42,7 @@ public class LoginController extends AbstractController {
             return;
         }
 
+        // Buscar usuario
         Jugador filtro = new Jugador();
         filtro.setLogin(usuario);
 
@@ -51,32 +55,44 @@ public class LoginController extends AbstractController {
 
         Jugador j = encontrados.get(0);
 
-        if (!j.isActivo()) {
-            lblMessage.setText("Jugador no activo 😔");
-            return;
-        }
-
+        // Verificar contraseña PRIMERO
         if (!j.getPassword().equals(contrasena)) {
             lblMessage.setText("Contraseña incorrecta");
             return;
         }
 
-        lblMessage.setText("✔ Bienvenido " + usuario);
-        System.out.println("Sesión iniciada con éxito");
+        // Si la cuenta está inactiva → preguntar reactivación
+        if (!j.isActivo()) {
 
-        // Abrir ventana del juego
+            Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmacion.setTitle("Cuenta eliminada");
+            confirmacion.setHeaderText("Tu cuenta está desactivada");
+            confirmacion.setContentText("¿Deseas recuperar esta cuenta?");
 
-        NavigationHelper.goTo(stage,
+            Optional<ButtonType> resultado = confirmacion.showAndWait();
+
+            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                j.setActivo(true);
+                servicioJugadores.actualizarJugador(j);
+            } else {
+                lblMessage.setText("usuario incorrecto");
+                return;
+            }
+        }
+
+        // Login exitoso
+        NavigationHelper.goTo(
+                stage,
                 "/mx/uaemex/fi/PartidaView.fxml",
                 "Partida",
                 controller -> {
                     PartidaController pc = (PartidaController) controller;
                     pc.setServicioJugadores(servicioJugadores);
                     pc.setServicioRecords(serviciorecords);
-                    pc.setStage(stage);
                     pc.setJugador(j);
-                });
-
+                    pc.setStage(stage);
+                }
+        );
     }
 
     @FXML
@@ -84,13 +100,13 @@ public class LoginController extends AbstractController {
         NavigationHelper.goTo(
                 stage,
                 "/mx/uaemex/fi/RegistroView.fxml",
-                "Registrarse",
+                "Registro",
                 controller -> {
                     RegistroController rc = (RegistroController) controller;
                     rc.setServicioJugadores(servicioJugadores);
                     rc.setServicioRecords(serviciorecords);
                     rc.setStage(stage);
-                });
+                }
+        );
     }
-
 }

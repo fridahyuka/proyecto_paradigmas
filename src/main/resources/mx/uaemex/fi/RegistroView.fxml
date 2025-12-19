@@ -7,24 +7,47 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<AnchorPane prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.uaemex.fi.controller.RegistroController">
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="80.0" layoutY="35.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Registro de Jugador" textFill="WHITE" />
-      <Label layoutX="25.0" layoutY="86.0" prefHeight="17.0" prefWidth="54.0" text="Usuario:" textFill="#46cbf0" />
-      <Label layoutX="25.0" layoutY="136.0" prefWidth="150" text="Contraseña:" textFill="#46cbf0" />
-      <Label layoutX="25.0" layoutY="187.0" prefWidth="150" text="Confirmar contraseña:" textFill="#46cbf0" />
-      <Label layoutX="25.0" layoutY="236.0" prefHeight="17.0" prefWidth="54.0" text="Correo:" textFill="#46cbf0" />
-      <Button layoutX="100.0" layoutY="298.0" onAction="#onRegistrarClic" prefWidth="150" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" text="Registrar" textFill="WHITE">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Label layoutX="73.0" layoutY="339.0" text="¿Ya tienes una cuenta?" textFill="WHITE" />
-      <Label layoutX="197.0" layoutY="339.0" onMouseClicked="#onIniciarSesionClic" style="-fx-cursor: hand; -fx-underline: true;" text="Inicia sesión" textFill="#b47bff" />
-      <TextField fx:id="fldLogin" layoutX="25.0" layoutY="103.0" prefWidth="250" promptText="Ingresa tu nmbre de usuario que deeas" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
-      <PasswordField fx:id="fldPassword" layoutX="25.0" layoutY="153.0" prefWidth="250" promptText="Crea una contraseña" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
-      <PasswordField fx:id="fldConfirmarP" layoutX="25.0" layoutY="204.0" prefWidth="250" promptText="Confirma tu contraseña" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
-      <TextField fx:id="fldCorreo" layoutX="25.0" layoutY="253.0" prefWidth="250" promptText="Ingresa tu email" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
-   </children>
+    <children>
+
+        <!-- TITULO -->
+        <Label layoutX="80.0" layoutY="35.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Registro de Jugador" textFill="WHITE" />
+
+        <!-- USUARIO -->
+        <Label layoutX="25.0" layoutY="86.0" text="Usuario:  (Elige bien porque no lo podras editar)" textFill="#46CBF0" />
+
+        <TextField fx:id="fldLogin" layoutX="25.0" layoutY="103.0" prefWidth="250" promptText="Ingresa tu nombre de usuario" style="                        -fx-background-color: transparent;                        -fx-text-fill: white;                        -fx-prompt-text-fill: #B0E7F5;                        -fx-caret-color: white;                        -fx-border-color: #46CBF0;                        -fx-border-radius: 20;                    " />
+
+        <!-- CONTRASEÑA -->
+        <Label layoutX="25.0" layoutY="136.0" text="Contraseña:" textFill="#46CBF0" />
+
+        <PasswordField fx:id="fldPassword" layoutX="25.0" layoutY="153.0" prefWidth="250" promptText="Crea una contraseña" style="                            -fx-background-color: transparent;                            -fx-text-fill: white;                            -fx-prompt-text-fill: #B0E7F5;                            -fx-caret-color: white;                            -fx-border-color: #46CBF0;                            -fx-border-radius: 20;                        " />
+
+        <!-- CONFIRMAR CONTRASEÑA -->
+        <Label layoutX="25.0" layoutY="187.0" text="Confirmar contraseña:" textFill="#46CBF0" />
+
+        <PasswordField fx:id="fldConfirmarP" layoutX="25.0" layoutY="204.0" prefWidth="250" promptText="Confirma tu contraseña" style="                            -fx-background-color: transparent;                            -fx-text-fill: white;                            -fx-prompt-text-fill: #B0E7F5;                            -fx-caret-color: white;                            -fx-border-color: #46CBF0;                            -fx-border-radius: 20;                        " />
+
+        <!-- CORREO -->
+        <Label layoutX="25.0" layoutY="236.0" text="Correo:" textFill="#46CBF0" />
+
+        <TextField fx:id="fldCorreo" layoutX="25.0" layoutY="253.0" prefWidth="250" promptText="Ingresa tu email" style="                        -fx-background-color: transparent;                        -fx-text-fill: white;                        -fx-prompt-text-fill: #B0E7F5;                        -fx-caret-color: white;                        -fx-border-color: #46CBF0;                        -fx-border-radius: 20;                    " />
+
+        <!-- MENSAJE ERROR -->
+        <Label fx:id="lblError" layoutX="25.0" layoutY="285.0" textFill="#FF6B6B" />
+
+        <!-- BOTON REGISTRAR -->
+        <Button layoutX="100.0" layoutY="326.0" onAction="#onRegistrarClick" prefWidth="150" style="-fx-background-color: null; -fx-border-color: white; -fx-border-radius: 20;" text="Registrar" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+
+        <!-- LOGIN -->
+        <Label layoutX="79.0" layoutY="366.0" text="¿Ya tienes una cuenta?" textFill="WHITE" />
+
+        <Label layoutX="197.0" layoutY="366.0" onMouseClicked="#onIniciarSesionClick" style="-fx-cursor: hand; -fx-underline: true;" text="Inicia sesión" textFill="#B47BFF" />
+
+    </children>
 </AnchorPane>

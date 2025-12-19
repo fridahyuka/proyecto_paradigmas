@@ -8,50 +8,77 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<AnchorPane prefHeight="478.0" prefWidth="347.0" style="-fx-background-color: #01344A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.uaemex.fi.controller.EditarController">
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="119.0" layoutY="22.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Editar Perfil" textFill="WHITE" />
-      <Label layoutX="42.0" layoutY="68.0" prefHeight="21.0" prefWidth="64.0" text="Usuario:" textFill="WHITE">
+    <children>
+
+        <!-- TITULO -->
+        <Label layoutX="119.0" layoutY="22.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Editar Perfil" textFill="WHITE" />
+
+        <!-- USUARIO -->
+        <Label layoutX="42.0" layoutY="68.0" text="Usuario:" textFill="WHITE">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+
+        <!-- CORREO -->
+        <Label layoutX="42.0" layoutY="128.0" text="Correo:" textFill="WHITE">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+
+        <TextField fx:id="fldCorreo" layoutX="42.0" layoutY="151.0" prefWidth="250" promptText="Ingresa tu correo electrónico" style="                        -fx-background-color: transparent;                        -fx-text-fill: white;                        -fx-prompt-text-fill: #B0E7F5;                        -fx-caret-color: white;                        -fx-border-color: #46CBF0;                        -fx-border-radius: 20;                    " />
+
+        <!-- CONTRASEÑA ACTUAL -->
+        <Label layoutX="42.0" layoutY="186.0" text="Contraseña actual:" textFill="WHITE">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+
+        <PasswordField fx:id="fldPasswordActual" layoutX="42.0" layoutY="210.0" prefWidth="250" promptText="Ingresa tu contraseña actual" style="                            -fx-background-color: transparent;                            -fx-text-fill: white;                            -fx-prompt-text-fill: #B0E7F5;                            -fx-caret-color: white;                            -fx-border-color: #46CBF0;                            -fx-border-radius: 20;                        " />
+
+        <!-- NUEVA CONTRASEÑA -->
+        <Label layoutX="42.0" layoutY="247.0" text="Nueva contraseña:" textFill="WHITE">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+
+        <PasswordField fx:id="fldNuevaPassword" layoutX="42.0" layoutY="268.0" prefWidth="250" promptText="Ingresa tu nueva contraseña" style="                            -fx-background-color: transparent;                            -fx-text-fill: white;                            -fx-prompt-text-fill: #B0E7F5;                            -fx-caret-color: white;                            -fx-border-color: #46CBF0;                            -fx-border-radius: 20;                        " />
+
+        <!-- CONFIRMAR CONTRASEÑA -->
+        <Label layoutX="42.0" layoutY="306.0" text="Confirmar contraseña:" textFill="WHITE">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+
+        <PasswordField fx:id="fldConfirmarPassword" layoutX="42.0" layoutY="334.0" prefWidth="250" promptText="Confirma la nueva contraseña" style="                            -fx-background-color: transparent;                            -fx-text-fill: white;                            -fx-prompt-text-fill: #B0E7F5;                            -fx-caret-color: white;                            -fx-border-color: #46CBF0;                            -fx-border-radius: 20;                        " />
+
+        <!-- NOTA -->
+        <Label layoutX="11.0" layoutY="394.0" style="-fx-font-size: 11px; -fx-text-fill: gray;" text="Nota: Deja los campos de contraseña vacíos si no quieres cambiarla" />
+
+        <!-- BOTONES -->
+        <Button layoutX="36.0" layoutY="423.0" onAction="#onGuardarClick" prefWidth="120" style="-fx-background-color: null; -fx-border-color: white; -fx-border-radius: 20;" text="Guardar" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+
+        <Button layoutX="170.0" layoutY="423.0" onAction="#onCancelarClick" prefWidth="120" style="-fx-background-color: null; -fx-border-color: white; -fx-border-radius: 20;" text="Cancelar" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+      <Label fx:id="lblError" layoutX="19.0" layoutY="369.0" prefHeight="18.0" prefWidth="318.0" textFill="WHITE" />
+      <Label fx:id="lblLogin" layoutX="42.0" layoutY="97.0" text="holaa" textFill="WHITE">
          <font>
-            <Font size="15.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="128.0" prefHeight="17.0" prefWidth="57.0" text="Correo:" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="42.0" layoutY="186.0" prefHeight="21.0" prefWidth="128.0" text="Contraseña actual:" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="42.0" layoutY="247.0" prefWidth="180" text="Nueva contraseña:" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="42.0" layoutY="306.0" prefWidth="180" text="Confirmar contraseña:" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextField fx:id="fldLogin" layoutX="42.0" layoutY="92.0" prefWidth="250" promptText="Ingresa tu usuario" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;" />
-      <TextField fx:id="fldCorreo" layoutX="42.0" layoutY="151.0" prefWidth="250" promptText="Ingresa tu correo electronico" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;" />
-      <PasswordField fx:id="fldPasswordActual" layoutX="42.0" layoutY="210.0" prefWidth="250" promptText="Ingresa tu contraseña actual" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;" />
-      <PasswordField fx:id="fldNuevaPassword" layoutX="42.0" layoutY="268.0" prefWidth="250" promptText="Ingresa tu nueva contraseña" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;" />
-      <PasswordField fx:id="fldConfirmarPassword" layoutX="42.0" layoutY="334.0" prefWidth="250" promptText="Confirma la nueva contraseña" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;" />
-      <Label layoutX="11.0" layoutY="368.0" style="-fx-font-size: 11px; -fx-text-fill: gray;" text="Nota: Deja los campos de contraseña vacíos si no quieres cambiarla" textFill="WHITE" />
-      <Button layoutX="39.0" layoutY="397.0" onAction="#onGuardarClic" prefWidth="120" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" text="Guardar" textFill="WHITE">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Button layoutX="175.0" layoutY="397.0" onAction="#onCancelarClic" prefWidth="120" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" text="Cancelar" textFill="WHITE">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-   </children>
+
+    </children>
 </AnchorPane>
