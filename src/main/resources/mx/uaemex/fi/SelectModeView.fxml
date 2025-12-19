@@ -8,14 +8,19 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+   prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;"
+   xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="42.0" layoutY="49.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Selecciona el modo de juego" textFill="WHITE">
+      <Label layoutX="42.0" layoutY="49.0" style="-fx-font-size: 20px; -fx-font-weight: bold;"
+         text="Selecciona el modo de juego" textFill="WHITE">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <Button layoutX="101.0" layoutY="143.0" onAction="#selectOnline" prefWidth="150" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;" text="Modo Online" textFill="#46cbf0">
+      <Button layoutX="101.0" layoutY="143.0" onAction="#selectOnline" prefWidth="150"
+         style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;"
+         text="Modo Online" textFill="#46cbf0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -23,7 +28,9 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="100.0" layoutY="243.0" onAction="#selectLocal" prefWidth="150" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;" text="Modo Local" textFill="#46cbf0">
+      <Button layoutX="100.0" layoutY="243.0" onAction="#selectLocal" prefWidth="150"
+         style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 20;"
+         text="Modo Local" textFill="#46cbf0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -31,6 +38,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="14.0" layoutX="29.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="293.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="14.0" layoutX="29.0"
+         layoutY="86.0" stroke="BLACK" strokeType="INSIDE" width="293.0" />
    </children>
 </AnchorPane>

@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane
-        prefHeight="460.0"
-        prefWidth="424.0"
-        style="-fx-background-color: #01344A;"
-        xmlns="http://javafx.com/javafx/23.0.1"
-        xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="mx.uaemex.fi.controller.MenuController">
+    prefHeight="460.0"
+    prefWidth="424.0"
+    style="-fx-background-color: #01344A;"
+    xmlns="http://javafx.com/javafx/23.0.1"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="mx.uaemex.fi.controller.MenuController">
 
     <children>
 
@@ -27,30 +27,30 @@
                 <GridPane layoutX="-46.0" layoutY="54.0" prefHeight="91.0" prefWidth="230.0">
 
                     <columnConstraints>
-                        <ColumnConstraints prefWidth="57.0"/>
-                        <ColumnConstraints prefWidth="172.8"/>
+                        <ColumnConstraints prefWidth="57.0" />
+                        <ColumnConstraints prefWidth="172.8" />
                     </columnConstraints>
 
                     <rowConstraints>
-                        <RowConstraints prefHeight="30.0"/>
-                        <RowConstraints prefHeight="30.0"/>
-                        <RowConstraints prefHeight="30.0"/>
+                        <RowConstraints prefHeight="30.0" />
+                        <RowConstraints prefHeight="30.0" />
+                        <RowConstraints prefHeight="30.0" />
                     </rowConstraints>
 
                     <children>
-                        <Label text="Usuario:" textFill="WHITE"/>
-                        <Label text="Correo:" textFill="WHITE" GridPane.rowIndex="2"/>
+                        <Label text="Usuario:" textFill="WHITE" />
+                        <Label text="Correo:" textFill="WHITE" GridPane.rowIndex="2" />
 
                         <Label fx:id="lblUsuario"
-                               text="Label"
-                               textFill="WHITE"
-                               GridPane.columnIndex="1"/>
+                            text="Label"
+                            textFill="WHITE"
+                            GridPane.columnIndex="1" />
 
                         <Label fx:id="lblCorreo"
-                               text="Label"
-                               textFill="WHITE"
-                               GridPane.columnIndex="1"
-                               GridPane.rowIndex="2"/>
+                            text="Label"
+                            textFill="WHITE"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="2" />
                     </children>
 
                 </GridPane>
@@ -59,70 +59,70 @@
 
         <!-- IMAGEN -->
         <ImageView
-                fitHeight="150.0"
-                fitWidth="200.0"
-                layoutX="137.0"
-                layoutY="50.0"
-                preserveRatio="true">
+            fitHeight="150.0"
+            fitWidth="200.0"
+            layoutX="137.0"
+            layoutY="50.0"
+            preserveRatio="true">
 
             <image>
-                <Image url="@images/trofeo.png"/>
+                <Image url="@images/trofeo.png" />
             </image>
         </ImageView>
 
         <!-- BOTONES -->
         <VBox
-                layoutX="296.0"
-                layoutY="215.0"
-                prefWidth="100.0"
-                spacing="10">
+            layoutX="296.0"
+            layoutY="215.0"
+            prefWidth="100.0"
+            spacing="10">
 
             <children>
 
                 <!-- BOTONES NORMALES -->
                 <Button
-                        text="Editar Datos"
-                        prefWidth="100"
-                        prefHeight="27"
-                        textFill="WHITE"
-                        onAction="#onEditarClick"
-                        style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;"/>
+                    text="Editar Datos"
+                    prefWidth="100"
+                    prefHeight="27"
+                    textFill="WHITE"
+                    onAction="#onEditarClick"
+                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
 
                 <Button
-                        text="Records"
-                        prefWidth="100"
-                        prefHeight="27"
-                        textFill="WHITE"
-                        onAction="#onRecordsClick"
-                        style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;"/>
+                    text="Records"
+                    prefWidth="100"
+                    prefHeight="27"
+                    textFill="WHITE"
+                    onAction="#onRecordsClick"
+                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
 
                 <Button
-                        text="Cerrar Sesión"
-                        prefWidth="100"
-                        prefHeight="27"
-                        textFill="WHITE"
-                        onAction="#onCerrarSesionClick"
-                        style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;"/>
+                    text="Cerrar Sesión"
+                    prefWidth="100"
+                    prefHeight="27"
+                    textFill="WHITE"
+                    onAction="#onCerrarSesionClick"
+                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
 
                 <Button
-                        text="Eliminar cuenta"
-                        prefWidth="100"
-                        prefHeight="27"
-                        textFill="WHITE"
-                        onAction="#onEliminarClick"
-                        style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;"/>
+                    text="Eliminar cuenta"
+                    prefWidth="100"
+                    prefHeight="27"
+                    textFill="WHITE"
+                    onAction="#onEliminarClick"
+                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
 
                 <!-- SEPARADOR VISUAL -->
-                <Pane prefHeight="20"/>
+                <Pane prefHeight="20" />
 
                 <!-- BOTÓN JUGAR -->
                 <Button
-                        text="Jugar"
-                        prefWidth="100"
-                        prefHeight="40"
-                        textFill="#76e1ff"
-                        onAction="#onJugarClick"
-                        style="-fx-background-color: null; -fx-border-color: #76e1ff; -fx-border-radius: 25;"/>
+                    text="Jugar"
+                    prefWidth="100"
+                    prefHeight="40"
+                    textFill="#76e1ff"
+                    onAction="#onJugarClick"
+                    style="-fx-background-color: null; -fx-border-color: #76e1ff; -fx-border-radius: 25;" />
 
             </children>
         </VBox>

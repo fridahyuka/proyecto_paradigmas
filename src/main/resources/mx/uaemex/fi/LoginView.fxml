@@ -10,12 +10,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.uaemex.fi.controller.LoginController">
+<AnchorPane prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;"
+    xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="mx.uaemex.fi.controller.LoginController">
 
     <children>
 
         <!-- ICONO -->
-        <ImageView fitHeight="136.0" fitWidth="105.0" layoutX="124.0" layoutY="5.0" preserveRatio="true">
+        <ImageView fitHeight="136.0" fitWidth="105.0" layoutX="124.0" layoutY="5.0"
+            preserveRatio="true">
             <image>
                 <Image url="@images/candado.png" />
             </image>
@@ -36,18 +39,18 @@
         </Label>
 
         <TextField fx:id="fldUser"
-                   layoutX="26.0"
-                   layoutY="187.0"
-                   prefWidth="300.0"
-                   promptText="Usuario"
-                   style="
-               -fx-background-color: transparent;
-               -fx-text-fill: white;
-               -fx-prompt-text-fill: #B0E7F5;
-               -fx-caret-color: white;
-               -fx-border-color: white;
-               -fx-border-radius: 20;
-           "/>
+            layoutX="26.0"
+            layoutY="187.0"
+            prefWidth="300.0"
+            promptText="Usuario"
+            style="
+ -fx-background-color: transparent;
+ -fx-text-fill: white;
+ -fx-prompt-text-fill: #B0E7F5;
+ -fx-caret-color: white;
+ -fx-border-color: white;
+ -fx-border-radius: 20;
+ " />
 
 
         <!-- CONTRASEÑA -->
@@ -58,25 +61,27 @@
         </Label>
 
         <PasswordField fx:id="fldPassword"
-                       layoutX="26.0"
-                       layoutY="271.0"
-                       prefWidth="300.0"
-                       promptText="Contraseña"
-                       style="
-                   -fx-background-color: transparent;
-                   -fx-text-fill: white;
-                   -fx-prompt-text-fill: #B0E7F5;
-                   -fx-caret-color: white;
-                   -fx-border-color: white;
-                   -fx-border-radius: 20;
-               "/>
+            layoutX="26.0"
+            layoutY="271.0"
+            prefWidth="300.0"
+            promptText="Contraseña"
+            style="
+ -fx-background-color: transparent;
+ -fx-text-fill: white;
+ -fx-prompt-text-fill: #B0E7F5;
+ -fx-caret-color: white;
+ -fx-border-color: white;
+ -fx-border-radius: 20;
+ " />
 
 
         <!-- MENSAJE -->
         <Label fx:id="lblMessage" layoutX="26.0" layoutY="305.0" textFill="WHITE" />
 
         <!-- BOTON INGRESAR -->
-        <Button layoutX="121.0" layoutY="331.0" onAction="#onEntrarClick" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 30;" text="Ingresar" textFill="#46cbf0">
+        <Button layoutX="121.0" layoutY="331.0" onAction="#onEntrarClick"
+            style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 30;"
+            text="Ingresar" textFill="#46cbf0">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -86,7 +91,9 @@
         </Button>
 
         <!-- BOTON REGISTRO -->
-        <Button layoutX="115.0" layoutY="401.0" onAction="#onRegistrarClick" style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 30;" text="Regístrate" textFill="#46cbf0">
+        <Button layoutX="115.0" layoutY="401.0" onAction="#onRegistrarClick"
+            style="-fx-background-color: null; -fx-border-color: #46CBF0; -fx-border-radius: 30;"
+            text="Regístrate" textFill="#46cbf0">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

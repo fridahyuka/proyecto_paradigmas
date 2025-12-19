@@ -8,12 +8,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.uaemex.fi.controller.RecordsController">
+<AnchorPane prefHeight="460.0" prefWidth="350.0" style="-fx-background-color: #01344A;"
+    xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="mx.uaemex.fi.controller.RecordsController">
 
     <children>
 
         <!-- TABLA DE RECORDS -->
-        <TableView fx:id="tblRecords" layoutX="80.0" layoutY="164.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: null;">
+        <TableView fx:id="tblRecords" layoutX="80.0" layoutY="164.0" prefHeight="200.0"
+            prefWidth="200.0" style="-fx-background-color: null;">
 
             <columns>
                 <TableColumn fx:id="colRecord" prefWidth="100.0" text="Record" />
@@ -30,27 +33,38 @@
         </Label>
 
         <!-- MEJOR MARCA (pendiente) -->
-        <Label fx:id="lblMejorRecord" layoutX="14.0" layoutY="84.0" text="¡Tu mejor marca! : " textFill="WHITE">
+        <Label fx:id="lblMejorRecord" layoutX="14.0" layoutY="84.0" text="¡Tu mejor marca! : "
+            textFill="WHITE">
             <font>
                 <Font name="Eras Bold ITC" size="14.0" />
             </font>
         </Label>
 
         <!-- BOTÓN MENÚ -->
-        <Button layoutX="266.0" layoutY="14.0" mnemonicParsing="false" onAction="#onMenuClic" prefHeight="37.0" prefWidth="71.0" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" text="≡" textFill="WHITE">
+        <Button layoutX="266.0" layoutY="14.0" mnemonicParsing="false" onAction="#onMenuClic"
+            prefHeight="37.0" prefWidth="71.0"
+            style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;"
+            text="≡" textFill="WHITE">
             <font>
                 <Font size="24.0" />
             </font>
         </Button>
 
         <!-- BOTÓN JUGAR -->
-        <Button layoutX="132.0" layoutY="414.0" mnemonicParsing="false" onAction="#onJugarClic" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" text="Jugar" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font></Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="179.0" layoutY="166.0" stroke="BLACK" strokeType="INSIDE" width="3.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="277.0" layoutY="164.0" stroke="BLACK" strokeType="INSIDE" width="3.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="81.0" layoutY="164.0" stroke="BLACK" strokeType="INSIDE" width="3.0" />
+        <Button layoutX="132.0" layoutY="414.0" mnemonicParsing="false" onAction="#onJugarClic"
+            prefHeight="26.0" prefWidth="94.0"
+            style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;"
+            text="Jugar" textFill="WHITE">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Button>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="179.0"
+            layoutY="166.0" stroke="BLACK" strokeType="INSIDE" width="3.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="277.0"
+            layoutY="164.0" stroke="BLACK" strokeType="INSIDE" width="3.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="81.0"
+            layoutY="164.0" stroke="BLACK" strokeType="INSIDE" width="3.0" />
 
     </children>
 </AnchorPane>
