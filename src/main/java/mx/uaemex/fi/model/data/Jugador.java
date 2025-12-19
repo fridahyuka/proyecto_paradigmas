@@ -41,4 +41,11 @@ public class Jugador extends ElementoConID implements Data {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    @Override
+    public String toString() {
+        return "Jugador [id=" + id + ", login=" + login + ", password=" + password + ", correo=" + correo + ", activo="
+                + activo + "]";
+    }
+
 }

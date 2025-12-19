@@ -6,10 +6,16 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import mx.uaemex.fi.API.PPTAPIPlayClient;
+import mx.uaemex.fi.API.responses.APIPlayResponse;
 import mx.uaemex.fi.game.Movimiento;
 import mx.uaemex.fi.game.ReglasPPT;
 import mx.uaemex.fi.game.Resultado;
 import mx.uaemex.fi.model.data.Record;
+import mx.uaemex.fi.service.RecordsService;
+import mx.uaemex.fi.service.local.RecordsServiceLocal;
+import mx.uaemex.fi.service.online.RecordsServiceOnline;
+import mx.uaemex.fi.session.Partida;
 import mx.uaemex.fi.util.NavigationHelper;
 
 import java.util.Date;
@@ -53,7 +59,6 @@ public class PartidaController extends AbstractController {
         imgJugador.setImage(null);
         imgOponente.setImage(null);
 
-
     }
 
     @FXML
@@ -83,7 +88,7 @@ public class PartidaController extends AbstractController {
 
     @FXML
     public void onMenuClick() {
-        if(this.jugador==null){
+        if (this.jugador == null) {
             System.out.println("jugador nulo");
             return;
         }
@@ -110,27 +115,56 @@ public class PartidaController extends AbstractController {
             return;
         }
 
-        Movimiento oponente = Movimiento.values()[random.nextInt(Movimiento.values().length)];
-        Resultado resultado = reglas.determinarGanador(jugador, oponente);
+        Movimiento oponente = Movimiento.LAGARTO;
+        Resultado resultado = Resultado.EMPATE;
+        Record record;
 
-        if (resultado == Resultado.GANASTE) {
-            victorias++;
-        } else if (resultado == Resultado.PERDISTE) {
-            // si pierde crea un record, lo guarda, y reinicia el conteo. Si pierde en el
-            // primer jugada no crea el record
+        if (getServiciorecords() instanceof RecordsServiceOnline) {
+            System.out.println("Se reconoce el modo online");
 
-            if (victorias == 0) {
-                return;
+            PPTAPIPlayClient playClient = new PPTAPIPlayClient();
+
+            try {
+                APIPlayResponse response = playClient.play(
+                        this.jugador.getLogin(), this.jugador.getPassword(), jugador);
+
+                Partida partida = response.asPartida();
+
+                resultado = partida.getResultado();
+                oponente = partida.getMovOponente();
+
+            } catch (Exception e) {
+                System.err.println("Imposible jugar contra la API");
             }
 
-            Record record = new Record();
-            record.setJugador(this.jugador);
-            record.setRecord(victorias);
-            record.setFecha(new Date());
+            record = ((RecordsServiceOnline) getServiciorecords()).getCurrentRecord(getJugador());
+            victorias = record.getRecord();
 
-            serviciorecords.insertar(record);
+        }
 
-            victorias = 0;
+        if (getServiciorecords() instanceof RecordsServiceLocal) {
+            System.out.println("Se reconoce el modo local");
+            oponente = Movimiento.values()[random.nextInt(Movimiento.values().length)];
+            resultado = reglas.determinarGanador(jugador, oponente);
+            if (resultado == Resultado.GANASTE) {
+                victorias++;
+            } else if (resultado == Resultado.PERDISTE) {
+                // si pierde crea un record, lo guarda, y reinicia el conteo. Si pierde en el
+                // primer jugada no crea el record
+
+                if (victorias == 0) {
+                    return;
+                }
+
+                record = new Record();
+                record.setJugador(this.jugador);
+                record.setRecord(victorias);
+                record.setFecha(new Date());
+
+                serviciorecords.insertar(record);
+
+                victorias = 0;
+            }
         }
 
         lblConteo.setText("" + victorias);
@@ -157,6 +191,18 @@ public class PartidaController extends AbstractController {
                         getClass().getResourceAsStream(
                                 "/mx/uaemex/fi/images/" + m.name().toLowerCase() + ".png"),
                         "No se encontró la imagen de " + m)));
+    }
+
+    @Override
+    public void setServicioRecords(RecordsService serviciorecords) {
+
+        if (getServiciorecords() instanceof RecordsServiceOnline) {
+
+            Record record = ((RecordsServiceOnline) serviciorecords).getCurrentRecord(getJugador());
+            victorias = record.getRecord();
+
+        }
+        super.setServicioRecords(serviciorecords);
     }
 
 }

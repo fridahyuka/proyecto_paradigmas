@@ -1,6 +1,8 @@
 package mx.uaemex.fi.service.online;
 
 import mx.uaemex.fi.API.PPTAPIPlayersClient;
+import mx.uaemex.fi.API.PPTAPIRegisterClient;
+import mx.uaemex.fi.API.PPTAPIWhoamiClient;
 import mx.uaemex.fi.API.responses.APIPlayerResponse;
 import mx.uaemex.fi.model.data.Jugador;
 import mx.uaemex.fi.service.JugadoresService;
@@ -10,11 +12,17 @@ import java.util.List;
 
 public class JugadoresServicesOnline implements JugadoresService {
 
-    PPTAPIPlayersClient client;
+    private PPTAPIPlayersClient client;
+    private PPTAPIWhoamiClient whoamiClient;
+    private PPTAPIRegisterClient registerClient;
 
     public JugadoresServicesOnline() {
 
         this.client = new PPTAPIPlayersClient();
+
+        this.whoamiClient = new PPTAPIWhoamiClient();
+
+        this.registerClient = new PPTAPIRegisterClient();
     }
 
     @Override
@@ -29,16 +37,15 @@ public class JugadoresServicesOnline implements JugadoresService {
 
     @Override
     public List<Jugador> consultarUsuario(Jugador j) {
-
+        System.out.println("Consulta del jugador filtro " + j.toString());
         List<Jugador> players = new ArrayList<>();
-        Integer id = j.getId();
-        if (id != null) {
+        if (j.getId() > 0) {
             try {
                 players.add(
                         client.getPlayerById(j.getId())
                                 .asJugador());
             } catch (Exception e) {
-                System.err.println("Imposible hacer la petición");
+                System.err.println("Imposible consultar el usuario por id " + j.getId() + " " + e.getMessage());
             }
         }
 
@@ -53,7 +60,7 @@ public class JugadoresServicesOnline implements JugadoresService {
 
                 }
             } catch (Exception e) {
-                System.err.println("Imposible hacer la petición");
+                System.err.println("Imposible consultar el usuario por nombre " + e.getMessage());
             }
         }
 
@@ -62,20 +69,32 @@ public class JugadoresServicesOnline implements JugadoresService {
 
     @Override
     public boolean eliminarJugador(Jugador j) {
-        // TODO Auto-generated method stub
         return false;
     }
 
     @Override
     public boolean login(Jugador j, String password) {
-        // TODO Auto-generated method stub
-        return false;
+
+        boolean result = whoamiClient.testAuthentication(j.getLogin(), password);
+
+        return result;
     }
 
     @Override
     public Jugador registrarJugador(Jugador j) {
-        // TODO Auto-generated method stub
-        return null;
+        Jugador jugador = new Jugador();
+
+        try {
+            registerClient.register(j.getLogin(), j.getPassword());
+            jugador.setActivo(true);
+            jugador.setLogin(j.getLogin());
+            jugador.setPassword(j.getPassword());
+
+        } catch (Exception e) {
+            return null;
+        }
+
+        return jugador;
     }
 
     public PPTAPIPlayersClient getClient() {
@@ -84,6 +103,22 @@ public class JugadoresServicesOnline implements JugadoresService {
 
     public void setClient(PPTAPIPlayersClient client) {
         this.client = client;
+    }
+
+    public PPTAPIWhoamiClient getWhoamiClient() {
+        return whoamiClient;
+    }
+
+    public void setWhoamiClient(PPTAPIWhoamiClient whoamiClient) {
+        this.whoamiClient = whoamiClient;
+    }
+
+    public PPTAPIRegisterClient getRegisterClient() {
+        return registerClient;
+    }
+
+    public void setRegisterClient(PPTAPIRegisterClient registerClient) {
+        this.registerClient = registerClient;
     }
 
 }

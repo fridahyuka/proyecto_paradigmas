@@ -7,6 +7,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import mx.uaemex.fi.model.data.Jugador;
+import mx.uaemex.fi.service.JugadoresService;
+import mx.uaemex.fi.service.local.JugadoresServicesLocal;
+import mx.uaemex.fi.service.online.JugadoresServicesOnline;
 import mx.uaemex.fi.util.NavigationHelper;
 
 import java.util.function.UnaryOperator;
@@ -26,15 +29,19 @@ public class RegistroController extends AbstractController {
     private TextField fldCorreo;
 
     @FXML
+    private Label lblEmail;
+
+    @FXML
     private Label lblError;
 
     @FXML
     public void initialize() {
         // Coinciden con la BD
-        limitarCaracteresSinEspacios(fldLogin, 15);      // VARCHAR(15)
-        limitarCaracteresSinEspacios(fldPassword, 64);   // VARCHAR(64)
+        limitarCaracteresSinEspacios(fldLogin, 15); // VARCHAR(15)
+        limitarCaracteresSinEspacios(fldPassword, 64); // VARCHAR(64)
         limitarCaracteresSinEspacios(fldConfirmarP, 64); // VARCHAR(64)
-        limitarCaracteresSinEspacios(fldCorreo, 30);     // VARCHAR(30)
+        limitarCaracteresSinEspacios(fldCorreo, 30); // VARCHAR(30)
+
     }
 
     @FXML
@@ -47,9 +54,10 @@ public class RegistroController extends AbstractController {
         String confirmacion = fldConfirmarP.getText();
         String correo = fldCorreo.getText().trim();
 
-
-        if (login.isEmpty() || password.isEmpty()
-                || confirmacion.isEmpty() || correo.isEmpty()) {
+        if (login.isEmpty() ||
+                password.isEmpty() ||
+                confirmacion.isEmpty() ||
+                (correo.isEmpty() && (getServicioJugadores() instanceof JugadoresServicesLocal))) {
             mostrarError("Llena todos los campos");
             return;
         }
@@ -79,29 +87,39 @@ public class RegistroController extends AbstractController {
             return;
         }
 
-        Jugador filtroCorreo = new Jugador();
-        filtroCorreo.setCorreo(correo);
+        if (getServicioJugadores() instanceof JugadoresServicesLocal) {
 
-        if (!servicioJugadores.consultarUsuario(filtroCorreo).isEmpty()) {
-            mostrarError("El correo ya está registrado");
-            return;
+            Jugador filtroCorreo = new Jugador();
+            filtroCorreo.setCorreo(correo);
+
+            if (!servicioJugadores.consultarUsuario(filtroCorreo).isEmpty()) {
+                mostrarError("El correo ya está registrado");
+                return;
+            }
+
         }
-
 
         Jugador nuevo = new Jugador();
         nuevo.setLogin(login);
         nuevo.setPassword(password);
-        nuevo.setCorreo(correo);
-        nuevo.setActivo(true);
 
-        servicioJugadores.registrarJugador(nuevo);
+        if (getServicioJugadores() instanceof JugadoresServicesLocal) {
+            nuevo.setCorreo(correo);
+            nuevo.setActivo(true);
+        }
+
+        Jugador newPlayer = servicioJugadores.registrarJugador(nuevo);
+
+        if (newPlayer == null) {
+            mostrarError("Error en el registro");
+            return;
+        }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Registro exitoso");
         alert.setHeaderText(null);
         alert.setContentText("Jugador guardado correctamente");
         alert.showAndWait();
-
 
         NavigationHelper.goTo(
                 stage,
@@ -113,10 +131,8 @@ public class RegistroController extends AbstractController {
                     pc.setServicioRecords(serviciorecords);
                     pc.setStage(stage);
                     pc.setJugador(nuevo);
-                }
-        );
+                });
     }
-
 
     @FXML
     public void onIniciarSesionClick() {
@@ -129,9 +145,9 @@ public class RegistroController extends AbstractController {
                     lc.setServicioJugadores(servicioJugadores);
                     lc.setServicioRecords(serviciorecords);
                     lc.setStage(stage);
-                }
-        );
+                });
     }
+
     private void mostrarError(String mensaje) {
         lblError.setText(mensaje);
         lblError.setStyle("-fx-text-fill: red;");
@@ -142,11 +158,9 @@ public class RegistroController extends AbstractController {
 
             String nuevoTexto = change.getControlNewText();
 
-
             if (nuevoTexto.contains(" ")) {
                 return null;
             }
-
 
             if (nuevoTexto.length() > max) {
                 return null;
@@ -157,5 +171,15 @@ public class RegistroController extends AbstractController {
 
         campo.setTextFormatter(new TextFormatter<>(filtro));
     }
-}
 
+    @Override
+    public void setServicioJugadores(JugadoresService servicioJugadores) {
+
+        if (servicioJugadores instanceof JugadoresServicesOnline) {
+            fldCorreo.setVisible(false);
+            lblEmail.setVisible(false);
+        }
+        super.setServicioJugadores(servicioJugadores);
+    }
+
+}

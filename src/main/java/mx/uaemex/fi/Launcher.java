@@ -2,35 +2,21 @@ package mx.uaemex.fi;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import mx.uaemex.fi.controller.LoginController;
-import mx.uaemex.fi.service.JugadoresService;
-import mx.uaemex.fi.service.RecordsService;
-import mx.uaemex.fi.service.local.ConexionPostgres;
+import mx.uaemex.fi.controller.SelectModeController;
 import mx.uaemex.fi.util.NavigationHelper;
 
 public class Launcher extends Application {
 
-    // Servicios globales que usará toda la aplicación
-    private JugadoresService servicioJugadores;
-    private RecordsService servicioRecords;
-
     @Override
     public void start(Stage stage) {
 
-        // Conectar a PostgreSQL e inicializar servicios
-        ConexionPostgres.conectar();
-        servicioJugadores = ConexionPostgres.getServicioJugadores();
-        servicioRecords = ConexionPostgres.getServicioRecords();
-
         NavigationHelper.goTo(
                 stage,
-                "/mx/uaemex/fi/LoginView.fxml",
+                "/mx/uaemex/fi/SelectModeView.fxml",
                 "Login",
                 controller -> {
-                    LoginController lc = (LoginController) controller;
+                    SelectModeController lc = (SelectModeController) controller;
                     lc.setStage(stage);
-                    lc.setServicioJugadores(servicioJugadores);
-                    lc.setServicioRecords(servicioRecords);
                 });
 
         stage.show();

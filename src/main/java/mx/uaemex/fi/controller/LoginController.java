@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import mx.uaemex.fi.model.data.Jugador;
+import mx.uaemex.fi.service.local.JugadoresServicesLocal;
 import mx.uaemex.fi.util.NavigationHelper;
 
 import java.util.List;
@@ -55,29 +56,37 @@ public class LoginController extends AbstractController {
 
         Jugador j = encontrados.get(0);
 
+        System.out.println("LA ID POR DEFECTO ES " + j.getId());
+
         if (!servicioJugadores.login(j, contrasena)) {
             lblMessage.setText("Contraseña incorrecta");
             return;
         }
 
-        // Si la cuenta está inactiva → preguntar reactivación
-        if (!j.isActivo()) {
+        if (servicioJugadores instanceof JugadoresServicesLocal) {
 
-            Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmacion.setTitle("Cuenta eliminada");
-            confirmacion.setHeaderText("Tu cuenta está desactivada");
-            confirmacion.setContentText("¿Deseas recuperar esta cuenta?");
+            // Si la cuenta está inactiva → preguntar reactivación
+            if (!j.isActivo()) {
 
-            Optional<ButtonType> resultado = confirmacion.showAndWait();
+                Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmacion.setTitle("Cuenta eliminada");
+                confirmacion.setHeaderText("Tu cuenta está desactivada");
+                confirmacion.setContentText("¿Deseas recuperar esta cuenta?");
 
-            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
-                j.setActivo(true);
-                servicioJugadores.actualizarJugador(j);
-            } else {
-                lblMessage.setText("usuario incorrecto");
-                return;
+                Optional<ButtonType> resultado = confirmacion.showAndWait();
+
+                if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
+                    j.setActivo(true);
+                    servicioJugadores.actualizarJugador(j);
+                } else {
+                    lblMessage.setText("usuario incorrecto");
+                    return;
+                }
             }
+
         }
+
+        j.setPassword(contrasena);
 
         // Login exitoso
         NavigationHelper.goTo(

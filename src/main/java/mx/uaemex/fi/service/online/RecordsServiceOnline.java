@@ -76,4 +76,26 @@ public class RecordsServiceOnline implements RecordsService {
         this.client = client;
     }
 
+    public Record getCurrentRecord(Jugador j) {
+
+        Record zeroRecord = new Record();
+        zeroRecord.setRecord(0);
+        zeroRecord.setJugador(j);
+        try {
+
+            List<APIRecordsResponse> recordsResponse = client.getRecordsByUsername(j.getLogin());
+
+            for (APIRecordsResponse recordResponse : recordsResponse) {
+                if (recordResponse.isIs_current_record()) {
+                    return recordResponse.asRecord();
+                }
+            }
+
+        } catch (Exception e) {
+
+        }
+
+        return zeroRecord;
+    }
+
 }

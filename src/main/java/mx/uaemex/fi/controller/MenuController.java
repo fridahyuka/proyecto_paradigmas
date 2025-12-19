@@ -2,19 +2,34 @@ package mx.uaemex.fi.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import mx.uaemex.fi.model.data.Jugador;
+import mx.uaemex.fi.service.JugadoresService;
+import mx.uaemex.fi.service.online.JugadoresServicesOnline;
 import mx.uaemex.fi.util.NavigationHelper;
 
 import java.util.Optional;
 
 public class MenuController extends AbstractController {
 
-    @FXML private Label lblUsuario;
-    @FXML private Label lblCorreo;
+    @FXML
+    private Label lblUsuario;
+    @FXML
+    private Label lblCorreo;
 
+    @FXML
+    private Button btnEdit;
+    @FXML
+    private Button btnRecords;
+    @FXML
+    private Button btnLogout;
+    @FXML
+    private Button btnDeleteAccount;
+    @FXML
+    private Button btnPlay;
 
     @FXML
     public void onJugarClick() {
@@ -61,7 +76,7 @@ public class MenuController extends AbstractController {
     }
 
     @FXML
-    public void onCerrarSesionClick(){
+    public void onCerrarSesionClick() {
         NavigationHelper.goTo(
                 stage,
                 "/mx/uaemex/fi/LoginView.fxml",
@@ -84,8 +99,7 @@ public class MenuController extends AbstractController {
         alert.setContentText(
                 "Esta acción desactivará tu cuenta.\n" +
                         "No podrás iniciar sesión nuevamente.\n\n" +
-                        "¿Deseas continuar?"
-        );
+                        "¿Deseas continuar?");
 
         // Botones personalizados
         ButtonType btnSi = new ButtonType("Sí, eliminar");
@@ -129,15 +143,25 @@ public class MenuController extends AbstractController {
         }
     }
 
-
     @Override
-    public void setJugador(Jugador jugador){
-        this.jugador=jugador;
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
         carcarDatos();
     }
-    private void carcarDatos(){
+
+    private void carcarDatos() {
         lblUsuario.setText(this.jugador.getLogin());
         lblCorreo.setText(this.jugador.getCorreo());
+    }
+
+    @Override
+    public void setServicioJugadores(JugadoresService servicioJugadores) {
+
+        if (servicioJugadores instanceof JugadoresServicesOnline) {
+            btnDeleteAccount.setVisible(false);
+            btnEdit.setVisible(false);
+        }
+        super.setServicioJugadores(servicioJugadores);
     }
 
 }

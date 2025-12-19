@@ -35,15 +35,13 @@ public class RecordsController extends AbstractController {
 
     private ObservableList<Record> listaRecords;
 
-    private static final DateTimeFormatter FORMATO_FECHA =
-            DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     @FXML
     public void initialize() {
 
         listaRecords = FXCollections.observableArrayList();
         tblRecords.setItems(listaRecords);
-
 
         colRecord.setCellValueFactory(new PropertyValueFactory<>("record"));
         colRecord.setCellFactory(col -> new TableCell<Record, Integer>() {
@@ -58,7 +56,6 @@ public class RecordsController extends AbstractController {
                 }
             }
         });
-
 
         colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         colFecha.setCellFactory(col -> new TableCell<Record, Date>() {
@@ -99,15 +96,10 @@ public class RecordsController extends AbstractController {
 
             if (max != null && max.getFecha() != null) {
 
-                LocalDate fecha =
-                        ((java.sql.Date) max.getFecha()).toLocalDate();
-
                 lblMejorRecord.setText(
                         "Tu mejor marca: " +
                                 max.getRecord() +
-                                " victorias, fecha " +
-                                fecha.format(FORMATO_FECHA)
-                );
+                                " victorias");
 
             } else {
                 lblMejorRecord.setText("Juega primero para crear tu primer récord 🎮");
@@ -115,10 +107,9 @@ public class RecordsController extends AbstractController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            lblMejorRecord.setText("Error al cargar récords");
+            lblMejorRecord.setText("Error al cargar récords" + e.getMessage());
         }
     }
-
 
     @Override
     public void setJugador(Jugador jugador) {

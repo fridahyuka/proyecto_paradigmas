@@ -40,7 +40,7 @@
             style=" -fx-background-color: transparent; -fx-text-fill: white; -fx-prompt-text-fill: #B0E7F5; -fx-caret-color: white; -fx-border-color: #46CBF0; -fx-border-radius: 20; " />
 
         <!-- CORREO -->
-        <Label layoutX="25.0" layoutY="236.0" text="Correo:" textFill="#46CBF0" />
+        <Label layoutX="25.0" layoutY="236.0" text="Correo:" textFill="#46CBF0" fx:id="lblEmail" />
 
         <TextField fx:id="fldCorreo" layoutX="25.0" layoutY="253.0" prefWidth="250"
             promptText="Ingresa tu email"

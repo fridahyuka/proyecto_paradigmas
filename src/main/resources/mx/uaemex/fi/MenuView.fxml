@@ -86,7 +86,8 @@
                     prefHeight="27"
                     textFill="WHITE"
                     onAction="#onEditarClick"
-                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
+                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;"
+                    fx:id="btnEdit" />
 
                 <Button
                     text="Records"
@@ -94,7 +95,8 @@
                     prefHeight="27"
                     textFill="WHITE"
                     onAction="#onRecordsClick"
-                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
+                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;"
+                    fx:id="btnRecords" />
 
                 <Button
                     text="Cerrar Sesión"
@@ -102,7 +104,8 @@
                     prefHeight="27"
                     textFill="WHITE"
                     onAction="#onCerrarSesionClick"
-                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
+                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;"
+                    fx:id="btnLogout" />
 
                 <Button
                     text="Eliminar cuenta"
@@ -110,7 +113,8 @@
                     prefHeight="27"
                     textFill="WHITE"
                     onAction="#onEliminarClick"
-                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;" />
+                    style="-fx-background-color: null; -fx-border-color: #ffffff; -fx-border-radius: 20;"
+                    fx:id="btnDeleteAccount" />
 
                 <!-- SEPARADOR VISUAL -->
                 <Pane prefHeight="20" />
@@ -122,7 +126,8 @@
                     prefHeight="40"
                     textFill="#76e1ff"
                     onAction="#onJugarClick"
-                    style="-fx-background-color: null; -fx-border-color: #76e1ff; -fx-border-radius: 25;" />
+                    style="-fx-background-color: null; -fx-border-color: #76e1ff; -fx-border-radius: 25;"
+                    fx:id="btnPlay" />
 
             </children>
         </VBox>

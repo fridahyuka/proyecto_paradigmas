@@ -31,12 +31,11 @@ public class EditarController extends AbstractController {
     @FXML
     private Label lblError;
 
-
     @FXML
     public void initialize() {
-        limitarCaracteresSinEspacios(fldCorreo, 30);           // VARCHAR(30)
-        limitarCaracteresSinEspacios(fldPasswordActual, 64);  // VARCHAR(64)
-        limitarCaracteresSinEspacios(fldNuevaPassword, 64);   // VARCHAR(64)
+        limitarCaracteresSinEspacios(fldCorreo, 30); // VARCHAR(30)
+        limitarCaracteresSinEspacios(fldPasswordActual, 64); // VARCHAR(64)
+        limitarCaracteresSinEspacios(fldNuevaPassword, 64); // VARCHAR(64)
         limitarCaracteresSinEspacios(fldConfirmarPassword, 64);
     }
 
@@ -44,7 +43,6 @@ public class EditarController extends AbstractController {
         lblLogin.setText(jugador.getLogin());
         fldCorreo.setText(jugador.getCorreo());
     }
-
 
     @FXML
     public void onGuardarClick() {
@@ -57,8 +55,6 @@ public class EditarController extends AbstractController {
         String nuevaPassword = fldNuevaPassword.getText();
         String confirmarPassword = fldConfirmarPassword.getText();
 
-
-
         if (correo.isEmpty()) {
             mostrarError("El correo es obligatorio");
             return;
@@ -69,8 +65,7 @@ public class EditarController extends AbstractController {
             return;
         }
 
-        boolean quiereCambiarPassword =
-                !nuevaPassword.isBlank() || !confirmarPassword.isBlank();
+        boolean quiereCambiarPassword = !nuevaPassword.isBlank() || !confirmarPassword.isBlank();
 
         if (quiereCambiarPassword) {
 
@@ -125,12 +120,10 @@ public class EditarController extends AbstractController {
         }
     }
 
-
     @FXML
     public void onCancelarClick() {
         regresarAlMenu();
     }
-
 
     private void regresarAlMenu() {
         NavigationHelper.goTo(
@@ -143,8 +136,7 @@ public class EditarController extends AbstractController {
                     mc.setServicioRecords(serviciorecords);
                     mc.setJugador(jugador);
                     mc.setStage(stage);
-                }
-        );
+                });
     }
 
     private void mostrarError(String mensaje) {
